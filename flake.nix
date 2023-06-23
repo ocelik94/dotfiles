@@ -37,7 +37,7 @@
     };
 
     awesomerc = {
-      url = "https://gitlab.projectoc.de/dotfiles/awesome.git";
+      url = "git+https://gitlab.projectoc.de/dotfiles/awesome.git";
       flake = false;
     };
 

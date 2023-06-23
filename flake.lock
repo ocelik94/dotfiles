@@ -3,17 +3,17 @@
     "awesomerc": {
       "flake": false,
       "locked": {
-        "lastModified": 1686120426,
-        "narHash": "sha256-rjB6+7kfQp6o49moIr5tpLJxkkcwhPZ27/MZB60bzjk=",
-        "owner": "sachnr",
-        "repo": "awesomewm-dotfiles",
-        "rev": "1dabbe40938b8fdcdc741cbbd20fc103917c0478",
-        "type": "github"
+        "lastModified": 1687557766,
+        "narHash": "sha256-cFB9ELckGco4EiQsjxFYxwQLlZ4TqOlaYUs5+f6IoMo=",
+        "ref": "refs/heads/main",
+        "rev": "7ba746c0dc8e6915c9f799e106e7c2e5208a2cb6",
+        "revCount": 1,
+        "type": "git",
+        "url": "https://gitlab.projectoc.de/dotfiles/awesome.git"
       },
       "original": {
-        "owner": "sachnr",
-        "repo": "awesomewm-dotfiles",
-        "type": "github"
+        "type": "git",
+        "url": "https://gitlab.projectoc.de/dotfiles/awesome.git"
       }
     },
     "crane": {
