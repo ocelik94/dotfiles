@@ -20,7 +20,7 @@ in
         enable = true;
         package = pkgs.picom-git;
         activeOpacity = 1.0;
-        backend = "egl";
+        backend = "glx";
         settings = {
           animations = true;
           animation-for-open-window = "maximize";
