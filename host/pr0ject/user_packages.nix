@@ -27,9 +27,10 @@ in {
     };
     programs = {
       neovim.enable = true;
-      firefox.enable = true;
       kitty.enable = true;
       rofi.enable = true;
+      vscode.enable = true;
+      brave.enable = true;
     };
     services = {
       picom.enable = true;

@@ -12,9 +12,6 @@
     stateVersion = "23.05";
 
     packages = let
-      veracrypt-patched = pkgs.veracrypt.overrideAttrs (prev: {
-        patches = prev.patches or [] ++ [../../patches/veracrypt.patch];
-      });
     in
       with pkgs; [
         # Terminal
@@ -30,7 +27,6 @@
 
         # General
         networkmanagerapplet
-        veracrypt-patched
 
         # media/game
         feh

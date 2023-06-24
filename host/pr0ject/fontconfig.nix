@@ -19,7 +19,7 @@
       hinting = {
         enable = true;
         autohint = false;
-        style = "hintslight";
+        style = "slight";
       };
       defaultFonts = {
         serif = ["Noto Sans" "Symbols Nerd Font Mono"];

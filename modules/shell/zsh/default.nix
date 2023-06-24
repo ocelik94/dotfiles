@@ -86,6 +86,17 @@ in
             e = "${pkgs.neovim}/bin/nvim ./";
             f = "${pkgs.ranger}/bin/ranger";
             tm = "tmux-fzy";
+            vim = "nvim";
+            smerge = "flatpak run com.sublimemerge.App";
+          };
+         zplug = {
+              enable = true;
+              plugins = [
+               # { name = "zsh-users/zsh-autosuggestions"; }
+               # { name = "zsh-users/zsh-completion"; }
+               # { name = "zsh-users/zsh-syntax-highlighting"; }
+               # { name = "ohmyzsh/command-not-found"; }
+              ];
           };
           plugins =
           [

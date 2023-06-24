@@ -31,7 +31,7 @@ in {
   boot = {
     supportedFilesystems = ["ntfs"];
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelParams = ["quiet" "acpi_osi=!"];
+    kernelParams = ["quiet"];
     extraModulePackages = [rtl8812au];
     loader = {
       timeout = 5;
@@ -41,7 +41,6 @@ in {
       };
       grub = {
         enable = true;
-        gfxmodeEfi = "1920x1080";
         devices = ["nodev"];
         efiSupport = true;
         useOSProber = true;
@@ -57,7 +56,7 @@ in {
   };
 
   # Set your time zone.
-  time.timeZone = "Asia/Kolkata";
+  time.timeZone = "Europe/Berlin";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -96,15 +95,7 @@ in {
 
   hardware = {
     pulseaudio.enable = false;
-    opengl = {
-      enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
-      extraPackages = with pkgs; [
-        vaapiVdpau
-        libvdpau-va-gl
-      ];
-    };
+    opengl.enable = true;
     bluetooth = {
       enable = true;
       settings = {
@@ -138,6 +129,9 @@ in {
     };
 
     systemPackages = with pkgs; [
+      # program
+      _1password-gui
+
       # system
       pulseaudio
       ntfs3g
@@ -184,7 +178,7 @@ in {
       #   }
       # ];
       layout = "us";
-      videoDrivers = ["vmware"];
+      videoDrivers = [ "vmware"  "modesetting"  "mesa" ];
       desktopManager = {
         xfce.enable = false;
       };
