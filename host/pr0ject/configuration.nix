@@ -9,14 +9,6 @@
   user,
   ...
 }: let
-  rtl8812au = pkgs.linuxKernel.packages.linux_6_3.rtl8812au.overrideAttrs (_: {
-    src = pkgs.fetchFromGitHub {
-      owner = "aircrack-ng";
-      repo = "rtl8812au";
-      rev = "35308f4dd73e77fa572c48867cce737449dd8548";
-      hash = "sha256-0kHrNsTKRl/xTQpDkIOYqTtcHlytXhXX8h+6guvLmLI=";
-    };
-  });
   sessions = pkgs.callPackage ../../pkgs/session.nix {};
   sddm-theme = pkgs.callPackage ../../pkgs/sddmtheme.nix {};
 in {
@@ -30,9 +22,8 @@ in {
   # Use the systemd-boot EFI boot loader.
   boot = {
     supportedFilesystems = ["ntfs"];
-    kernelPackages = pkgs.linuxPackages_latest;
-    kernelParams = ["quiet"];
-    extraModulePackages = [rtl8812au];
+    kernelPackages = pkgs.linuxPackages_5_4;
+    kernelParams = ["quiet" ];
     loader = {
       timeout = 5;
       efi = {
@@ -95,7 +86,6 @@ in {
 
   hardware = {
     pulseaudio.enable = false;
-    opengl.enable = true;
     bluetooth = {
       enable = true;
       settings = {
@@ -114,7 +104,6 @@ in {
   };
 
   programs.zsh.enable = true;
-  virtualisation.vmware.guest.enable = true;
 
   nixpkgs.config = {
     allowUnfree = true;
@@ -159,13 +148,13 @@ in {
 
   # List services that you want to enable:
   services = {
-    blueman.enable = true;
+    blueman.enable = false;
     fstrim.enable = true;
     dbus.enable = true;
     gvfs.enable = true;
-    # openssh.enable = true;
-    # printing.enable = true;
   };
+
+ virtualisation.vmware.guest.enable = true;
 
   # Enable display manager
   services = {
@@ -178,7 +167,7 @@ in {
       #   }
       # ];
       layout = "us";
-      videoDrivers = [ "vmware"  "modesetting"  "mesa" ];
+      videoDrivers = lib.mkOverride 50 [ "vmware" ];
       desktopManager = {
         xfce.enable = false;
       };
