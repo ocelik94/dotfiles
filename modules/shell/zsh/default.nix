@@ -28,7 +28,6 @@ in
       programs = {
         zsh = {
           enable = true;
-          enableCompletion = true;
           enableAutosuggestions = true;
           autocd = true;
           dotDir = ".config/zsh";
@@ -36,26 +35,12 @@ in
             expireDuplicatesFirst = true;
             path = "$HOME/.config/zsh/.zsh_history";
           };
-          completionInit =
-            (import ./completion.nix)
-            + ''
-              autoload -U +X compinit && compinit
-              autoload -U +X bashcompinit && bashcompinit
-            '';
           initExtraFirst = ''
             if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
               source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
             fi
 
-            if [[ -f "$HOME/.config/zsh/plugins/sudo/sudo.plugin.zsh" ]]; then
-                source "$HOME/.config/zsh/plugins/sudo/sudo.plugin.zsh"
-            fi
-
-            export PATH="''${PATH}:$HOME/.npm/bin:''${HOME}/.local/share/nvim/mason/bin"
-            export PATH="''${PATH}:$HOME/.cargo/bin"
             export EDITOR="nvim"
-            export PYTHONPATH=$HOME/.config/pip/site-packages
-            export CODE_LLDB_PATH=${pkgs.vscode-extensions.vadimcn.vscode-lldb}
           '';
           initExtra = let
             p10k = ''
@@ -74,24 +59,20 @@ in
                 p10k
               );
           shellAliases = {
-            gg = "${pkgs.lazygit}/bin/lazygit";
-            nixr = "sudo nixos-rebuild switch --flake /home/${user}/flake#pr0ject";
-            nixc = "sudo nix-collect-garbage --delete-older-than 7d";
-            ls = "${pkgs.exa}/bin/exa --icons --group-directories-first";
-            la = "${pkgs.exa}/bin/exa -lah --icons --group-directories-first";
-            tree = "${pkgs.exa}/bin/exa --tree --icons --group-directories-first";
+            nixr = "sudo nixos-rebuild switch --flake https://gitlab.projectoc.de/dotfiles/flake#pr0ject";
+            nixc = "sudo nix-collect-garbage --delete-older-than 2d";
             e = "${pkgs.neovim}/bin/nvim ./";
             f = "${pkgs.ranger}/bin/ranger";
             vim = "nvim";
-            smerge = "flatpak run com.sublimemerge.App";
           };
          zplug = {
               enable = true;
               plugins = [
-               # { name = "zsh-users/zsh-autosuggestions"; }
-               # { name = "zsh-users/zsh-completion"; }
-               # { name = "zsh-users/zsh-syntax-highlighting"; }
-               # { name = "ohmyzsh/command-not-found"; }
+               { name = "zsh-users/zsh-autosuggestions"; }
+               { name = "zsh-users/zsh-completions"; }
+               { name = "zsh-users/zsh-syntax-highlighting"; }
+               { name = "plugins/command-not-found"; tags = [ from:oh-my-zsh ];}
+               { name = "plugins/sudo"; tags = [ from:oh-my-zsh ];}
               ];
           };
           plugins =
@@ -114,7 +95,7 @@ in
               src = pkgs.fetchFromGitHub {
                 owner = "romkatv";
                 repo = "powerlevel10k";
-                rev = "v1.17.0";
+                rev = "v1.19.0";
                 sha256 = "sha256-fgrwbWj6CcPoZ6GbCZ47HRUg8ZSJWOsa7aipEqYuE0Q=";
               };
             }
@@ -123,6 +104,5 @@ in
       };
 
       home.file.".config/zsh/.p10k.zsh".source = ./.p10k.zsh;
-      home.file.".config/zsh/plugins/sudo/sudo.plugin.zsh".source = ./sudo.plugin.zsh;
     };
   }
