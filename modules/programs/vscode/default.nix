@@ -24,6 +24,10 @@ in
         extensions = with pkgs.vscode-extensions; [
           bbenoist.nix
         ];
+        userSettings = {
+           editor.fontFamily =  "RobotoMono Nerd Font Mono";
+           terminal.integrated.fontFamily = "RobotoMono Nerd Font Mono, monospace";
+        };
       };
     };
   }
