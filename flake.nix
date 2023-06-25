@@ -6,22 +6,13 @@
     #nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
 
     nur = {
-      url = "github:nix-community/NUR"; # NUR Packages
+      url = "github:nix-community/NUR";
     };
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # hyprland = {
-    #   url = "github:vaxerski/Hyprland";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    # nixpkgs-wayland = {
-    #   url = "github:nix-community/nixpkgs-wayland";
-    # };
 
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
 
@@ -41,10 +32,6 @@
       flake = false;
     };
 
-    tmux-tpm = {
-      url = "github:tmux-plugins/tpm";
-      flake = false;
-    };
   };
 
   outputs = inputs @ {self, ...}: let
@@ -54,7 +41,6 @@
       nur.overlay
       neovim-nightly-overlay.overlay
       nixpkgs-f2k.overlays.compositors
-      # wallpapers.overlay
       nix-rice.overlays.default
       (final: prev: rec {
         awesome = nixpkgs-f2k.packages.x86_64-linux.awesome-luajit-git;

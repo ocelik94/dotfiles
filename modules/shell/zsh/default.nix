@@ -8,7 +8,6 @@
   ...
 }: let
   cfg = config.modules.shell.zsh;
-  tmux-sessionizer = import ./tmux.nix {inherit pkgs;};
 in
   with lib; {
     options.modules.shell.zsh = {
@@ -21,8 +20,6 @@ in
 
     config = mkIf cfg.enable {
       home.packages = with pkgs; [
-        tmux
-        tmux-sessionizer
         exa
         fzf
         vscode-extensions.vadimcn.vscode-lldb
@@ -85,7 +82,6 @@ in
             tree = "${pkgs.exa}/bin/exa --tree --icons --group-directories-first";
             e = "${pkgs.neovim}/bin/nvim ./";
             f = "${pkgs.ranger}/bin/ranger";
-            tm = "tmux-fzy";
             vim = "nvim";
             smerge = "flatpak run com.sublimemerge.App";
           };
