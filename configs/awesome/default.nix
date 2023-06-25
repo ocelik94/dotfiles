@@ -17,7 +17,7 @@ pkgs.stdenv.mkDerivation rec {
     cp -r ${src}/* $out/awesome
 
     substituteInPlace $out/awesome/theme/pallete.lua \
-      --replace "rosepine" "${theme.colors.name.theme}"
+      --replace "dark" "${theme.colors.name.theme}"
 
     substituteInPlace $out/awesome/theme/init.lua \
       --replace "Roboto" "${theme.colors.name.font}" \

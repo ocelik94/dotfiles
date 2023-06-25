@@ -34,7 +34,6 @@ in {
     };
     services = {
       picom.enable = true;
-      mpd.enable = true;
       polkit.enable = true;
     };
     shell = {
