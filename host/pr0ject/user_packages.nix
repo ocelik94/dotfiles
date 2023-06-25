@@ -35,10 +35,7 @@ in {
     services = {
       picom.enable = true;
       mpd.enable = true;
-      gammastep.enable = false;
-      mako.enable = true;
       polkit.enable = true;
-      gnupg.enable = true;
     };
     shell = {
       zsh.enable = true;
