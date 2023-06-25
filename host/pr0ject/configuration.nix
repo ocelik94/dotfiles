@@ -9,7 +9,6 @@
   user,
   ...
 }: let
-  sessions = pkgs.callPackage ../../pkgs/session.nix {};
   sddm-theme = pkgs.callPackage ../../pkgs/sddmtheme.nix {};
 in {
   imports = [
@@ -185,7 +184,6 @@ in {
           enable = true;
           theme = "Psion";
         };
-        # sessionPackages = [sessions];
         lightdm.enable = false;
       };
       libinput = {
@@ -195,17 +193,6 @@ in {
         touchpad.naturalScrolling = true;
       };
     };
-    # greetd = {
-    #   enable = true;
-    #   package = pkgs.greetd.tuigreet;
-    #   vt = 2;
-    #   settings = {
-    #     default_session = {
-    #       user = "ocelik";
-    #       command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway --remember --remember-session --user-menu";
-    #     };
-    #   };
-    # };
     # sound
     pipewire = {
       enable = true;
