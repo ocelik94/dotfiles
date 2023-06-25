@@ -27,6 +27,8 @@ in
         userSettings = {
            editor.fontFamily =  "RobotoMono Nerd Font Mono";
            terminal.integrated.fontFamily = "RobotoMono Nerd Font Mono, monospace";
+           git.confirmSync = false;
+           git.enableSmartCommit = true;
         };
       };
     };
