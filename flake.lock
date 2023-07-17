@@ -3,11 +3,11 @@
     "awesomerc": {
       "flake": false,
       "locked": {
-        "lastModified": 1689290594,
-        "narHash": "sha256-HgsNPC7IpzCJAxrIQw4LAquHxswvAICnrLDzjN7FAoQ=",
+        "lastModified": 1689630577,
+        "narHash": "sha256-qiux/KJHbUxOMo3wvwt67UIXT2gM0CRsTuoAhoUKuMI=",
         "ref": "refs/heads/main",
-        "rev": "c351fb0a2bcb1cbfe1562cf7279f1f926af2ba97",
-        "revCount": 10,
+        "rev": "af3fdf7ef36dec19641e58869493779cddf5a023",
+        "revCount": 14,
         "type": "git",
         "url": "https://gitlab.projectoc.de/dotfiles/awesome.git"
       },
@@ -705,11 +705,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1689601760,
-        "narHash": "sha256-gwsrEprPy6Q0iQ5qloWulmhkVh78/Y9tLA3MejK30Rw=",
+        "lastModified": 1689626904,
+        "narHash": "sha256-aZUELx8yQrctZpekbxlMD86AbNHG4s03C8UbX8L9W6M=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "029d2023eeceee09200a93a48ba1a60413e9b328",
+        "rev": "4b6680becbcdd5c7ce08e550a2953087ca9d7e03",
         "type": "github"
       },
       "original": {
