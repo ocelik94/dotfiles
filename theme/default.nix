@@ -1,4 +1,5 @@
-_: let
+_:
+let
 in {
-  colors = import ./dark.nix {};
+  colors = import ./dark.nix { };
 }

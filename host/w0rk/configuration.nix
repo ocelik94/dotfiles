@@ -18,8 +18,7 @@ in
   boot = {
     supportedFilesystems = [ "ntfs" ];
     kernelPackages = pkgs.linuxPackages_latest;
-    blacklistedKernelModules = ["nouveau" "i2c_nvidia_gpu"];
-    kernelParams = ["quiet" "acpi_osi=!"];
+    kernelParams = ["quiet"];
     loader = {
       timeout = 5;
       efi = {
@@ -35,8 +34,6 @@ in
       };
     };
   };
-
-  time.hardwareClockInLocalTime = true;
 
   networking = {
     hostName = "pr0ject";
@@ -182,23 +179,15 @@ in
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
-    extraPackages = with pkgs; [
-      vaapiVdpau
-      libvdpau-va-gl
-      nvidia-vaapi-driver
-    ];
   };
-  hardware.nvidia.powerManagement.enable = true;
-  hardware.nvidia.nvidiaSettings = true;
-  hardware.nvidia.nvidiaPersistenced = true;
-  hardware.nvidia.modesetting.enable = true;
-  hardware.nvidia.open = false;
+
+  services.upower.enable = true;
 
   services = {
     xserver = {
       enable = true;
       layout = "eu";
-      videoDrivers = [ "nvidia" ];
+      videoDrivers = [ "amdgpu" ];
       desktopManager = {
         xfce.enable = false;
       };
@@ -216,11 +205,11 @@ in
           enable = true;
           theme = "Psion";
         };
-        setupCommands = ''
-          LEFT='DP-0'
-          RIGHT='DP-2'
-          ${pkgs.xorg.xrandr}/bin/xrandr --output $LEFT --left-of $RIGHT --mode 2560x1440 --rate 165 --output $RIGHT --primary --mode 2560x1440 --rate 165 
-      '';
+        #setupCommands = ''
+        #  LEFT='DP-0'
+        #  RIGHT='DP-2'
+        #  ${pkgs.xorg.xrandr}/bin/xrandr --output $LEFT --left-of $RIGHT --mode 2560x1440 --rate 165 --output $RIGHT --primary --mode 2560x1440 --rate 165 
+      #'';
       };
       libinput = {
         enable = true;

@@ -1,4 +1,4 @@
-{
+ {
   description = "A very basic flake";
 
   inputs = {
@@ -20,12 +20,7 @@
       url = "github:nix-community/neovim-nightly-overlay";
     };
 
-    nix-rice = {url = "github:bertof/nix-rice";};
-
-    rtl8812au = {
-      url = "github:aircrack-ng/rtl8812au";
-      flake = false;
-    };
+    nix-rice = { url = "github:bertof/nix-rice"; };
 
     awesomerc = {
       url = "git+https://gitlab.projectoc.de/dotfiles/awesome.git";
@@ -34,23 +29,28 @@
 
   };
 
-  outputs = inputs @ {self, ...}: let
-    system = "x86_64-linux";
+  outputs = inputs @ { self, ... }:
+    let
+      system = "x86_64-linux";
 
-    overlays = with inputs; [
-      nur.overlay
-      neovim-nightly-overlay.overlay
-      nixpkgs-f2k.overlays.compositors
-      nix-rice.overlays.default
-      (final: prev: rec {
-        awesome = nixpkgs-f2k.packages.x86_64-linux.awesome-luajit-git;
-      })
-    ];
-  in {
-    nixosConfigurations = with inputs; {
-      pr0ject = import ./host/pr0ject {
-        inherit overlays inputs;
+      overlays = with inputs; [
+        nur.overlay
+        neovim-nightly-overlay.overlay
+        nixpkgs-f2k.overlays.compositors
+        nix-rice.overlays.default
+        (final: prev: rec {
+          awesome = nixpkgs-f2k.packages.x86_64-linux.awesome-luajit-git;
+        })
+      ];
+    in
+    {
+      nixosConfigurations = with inputs; {
+        pr0ject = import ./host/pr0ject {
+          inherit overlays inputs;
+        };
+        w0rk = import ./host/w0rk {
+          inherit overlays inputs;
+        };
       };
     };
-  };
 }

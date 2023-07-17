@@ -1,18 +1,19 @@
-{
-  pkgs,
-  stdenv,
-  lib,
-  glib,
-  libxml2,
-  bc,
-  fetchFromGitHub,
-  gtk-engine-murrine,
-  theme,
-  ...
-}: let
-  oomox-colors = let
-    substr = str: lib.strings.removePrefix "#" str;
-  in
+{ pkgs
+, stdenv
+, lib
+, glib
+, libxml2
+, bc
+, fetchFromGitHub
+, gtk-engine-murrine
+, theme
+, ...
+}:
+let
+  oomox-colors =
+    let
+      substr = str: lib.strings.removePrefix "#" str;
+    in
     with theme.colors; ''
       BG=${substr background2}
       FG=${substr foreground}
@@ -91,41 +92,43 @@
       UNITY_DEFAULT_LAUNCHER_STYLE=False
     '';
 in
-  stdenv.mkDerivation rec {
-    name = "oomox-gtk-${version}";
+stdenv.mkDerivation rec {
+  name = "oomox-gtk-${version}";
 
-    version = "1.15.1";
+  version = "1.15.1";
 
-    src = fetchFromGitHub {
-      owner = "themix-project";
-      repo = "themix-gui";
-      rev = "${version}";
-      sha256 = "sha256-xFtwNx1c7Atb+9yorZhs/uVkkoxbZiELJ0SZ88L7KMs=";
-      fetchSubmodules = true;
-    };
+  src = fetchFromGitHub {
+    owner = "themix-project";
+    repo = "themix-gui";
+    rev = "${version}";
+    sha256 = "sha256-xFtwNx1c7Atb+9yorZhs/uVkkoxbZiELJ0SZ88L7KMs=";
+    fetchSubmodules = true;
+  };
 
-    dontBuild = true;
+  dontBuild = true;
 
-    nativeBuildInputs = [
-      glib
-      libxml2
-      bc
-    ];
+  nativeBuildInputs = [
+    glib
+    libxml2
+    bc
+  ];
 
-    buildInputs = with pkgs; [
-      gnome3.gnome-themes-extra
-      gdk-pixbuf
-      librsvg
-      sassc
-      inkscape
-      optipng
-    ];
+  buildInputs = with pkgs; [
+    gnome3.gnome-themes-extra
+    gdk-pixbuf
+    librsvg
+    sassc
+    inkscape
+    optipng
+  ];
 
-    propagatedUserEnvPkgs = [gtk-engine-murrine];
+  propagatedUserEnvPkgs = [ gtk-engine-murrine ];
 
-    installPhase = let
+  installPhase =
+    let
       home = builtins.getEnv "HOME";
-    in ''
+    in
+    ''
       mkdir -p $out/share/icons/icons_papirus
       echo "${oomox-colors}" > $out/oomox.colors
       pushd plugins/icons_papirus
@@ -139,9 +142,9 @@ in
       popd
     '';
 
-    meta = {
-      description = "custom theme utility";
-      homepage = "https://github.com/themix-project/themix-gui";
-      maintainers = [];
-    };
-  }
+  meta = {
+    description = "custom theme utility";
+    homepage = "https://github.com/themix-project/themix-gui";
+    maintainers = [ ];
+  };
+}
