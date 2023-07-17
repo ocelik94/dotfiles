@@ -210,6 +210,7 @@ in
       desktopManager = {
         xterm.enable = false;
       };
+      imwheel.enable = true;
       displayManager = {
         startx.enable = true;
         sddm = {

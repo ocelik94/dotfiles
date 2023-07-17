@@ -23,6 +23,7 @@ with lib; {
       packages = with pkgs; [
         tectonic
         biber217
+        perl536Packages.LatexIndent
       ];
     };
   };
