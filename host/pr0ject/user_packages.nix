@@ -25,6 +25,7 @@ in
       vscode.enable = true;
       brave.enable = true;
       latex.enable = true;
+      devops-tools.enable = true;
     };
     services = {
       picom.enable = true;
