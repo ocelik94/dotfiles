@@ -43,25 +43,26 @@ in {
     font = "ter-u28b";
     useXkbConfig = true;
     earlySetup = true;
-    colors = let substr = str: lib.strings.removePrefix "#" str;
-    in with theme.colors; [
-      (substr black)
-      (substr red)
-      (substr green)
-      (substr yellow)
-      (substr blue)
-      (substr purple)
-      (substr aqua)
-      (substr gray)
-      (substr brightblack)
-      (substr brightred)
-      (substr brightgreen)
-      (substr brightyellow)
-      (substr brightblue)
-      (substr brightpurple)
-      (substr brightaqua)
-      (substr brightgray)
-    ];
+    colors =
+      let substr = str: lib.strings.removePrefix "#" str;
+      in with theme.colors; [
+        (substr black)
+        (substr red)
+        (substr green)
+        (substr yellow)
+        (substr blue)
+        (substr purple)
+        (substr aqua)
+        (substr gray)
+        (substr brightblack)
+        (substr brightred)
+        (substr brightgreen)
+        (substr brightyellow)
+        (substr brightblue)
+        (substr brightpurple)
+        (substr brightaqua)
+        (substr brightgray)
+      ];
   };
 
   users.users.${user} = {

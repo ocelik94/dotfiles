@@ -9,7 +9,8 @@ let
   desktop = getDirfolders ../../modules/desktop;
   programs = getDirfolders ../../modules/programs;
   services = getDirfolders ../../modules/services;
-in {
+in
+{
   imports = [ ./home.nix ] ++ desktop ++ programs ++ services ++ shell;
 
   config.modules = rec {

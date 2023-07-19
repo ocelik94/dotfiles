@@ -33,18 +33,20 @@ in with lib; {
 
           export EDITOR="nvim"
         '';
-        initExtra = let
-          p10k = ''
-            ZSH_THEME="powerlevel10k/powerlevel10k"
-            [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-          '';
-        in with theme.colors;
-        ''
-          export FZF_DEFAULT_OPTS="--layout=reverse"\
-          " --color=bg+:${background2},bg:${background},spinner:${brightred},hl:${brightblack}"\
-          " --color=fg:${foreground},header:${brightblack},info:${brightaqua},pointer:${brightred}"\
-          " --color=marker:${brightred},fg+:${foreground},prompt:${brightred},hl+:${brightred}"
-        '' + (p10k);
+        initExtra =
+          let
+            p10k = ''
+              ZSH_THEME="powerlevel10k/powerlevel10k"
+              [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+            '';
+          in
+          with theme.colors;
+          ''
+            export FZF_DEFAULT_OPTS="--layout=reverse"\
+            " --color=bg+:${background2},bg:${background},spinner:${brightred},hl:${brightblack}"\
+            " --color=fg:${foreground},header:${brightblack},info:${brightaqua},pointer:${brightred}"\
+            " --color=marker:${brightred},fg+:${foreground},prompt:${brightred},hl+:${brightred}"
+          '' + (p10k);
         shellAliases = {
           nixr =
             "sudo nixos-rebuild switch --flake https://gitlab.projectoc.de/dotfiles/flake#pr0ject";

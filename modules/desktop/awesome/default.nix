@@ -4,7 +4,8 @@ let
   i3lockwconfig = import ./i3lock.nix { inherit pkgs theme; };
   awesome_cfg =
     import ../../../configs/awesome { inherit inputs lib theme pkgs; };
-in with lib; {
+in
+with lib; {
   options.modules.desktop.awesome = {
     enable = mkOption {
       type = types.bool;

@@ -2,7 +2,8 @@
 let
   cfg = config.modules.programs.wezterm;
   extracfg = import ./extraconfig.nix { inherit theme; };
-in with lib; {
+in
+with lib; {
   options.modules.programs.wezterm = {
     enable = mkOption {
       type = types.bool;

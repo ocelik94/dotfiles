@@ -14,7 +14,8 @@ let
   };
   configuration =
     import ./configuration.nix { inherit lib user inputs theme pkgs; };
-in lib.nixosSystem {
+in
+lib.nixosSystem {
   inherit system pkgs;
   modules = [
     configuration

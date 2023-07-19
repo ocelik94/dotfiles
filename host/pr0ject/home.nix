@@ -11,46 +11,47 @@
     homeDirectory = "/home/ocelik";
     stateVersion = "23.05";
 
-    packages = let
-    in with pkgs; [
-      # Terminal
-      ranger
-      less
-      lazygit
-      ripgrep
-      gh-dash
-      lxqt.pcmanfm-qt
-      libsForQt5.ark
+    packages =
+      let
+      in with pkgs; [
+        # Terminal
+        ranger
+        less
+        lazygit
+        ripgrep
+        gh-dash
+        lxqt.pcmanfm-qt
+        libsForQt5.ark
 
-      # General
-      networkmanagerapplet
+        # General
+        networkmanagerapplet
 
-      # media/game
-      feh
-      pavucontrol
-      easyeffects
-      teamspeak_client
-      discord
+        # media/game
+        feh
+        pavucontrol
+        easyeffects
+        teamspeak_client
+        discord
 
-      # Downloader
-      wget
-      aria
+        # Downloader
+        wget
+        aria
 
-      # Language Servers
-      sumneko-lua-language-server
-      nodePackages.typescript-language-server
-      nodePackages.vscode-langservers-extracted
+        # Language Servers
+        sumneko-lua-language-server
+        nodePackages.typescript-language-server
+        nodePackages.vscode-langservers-extracted
 
-      # Dev
-      sublime-merge
-      gnupg
-      rustup
-      git
-      jq
-      gcc
-      pkg-config
-      luajitPackages.jsregexp
-      cmake
-    ];
+        # Dev
+        sublime-merge
+        gnupg
+        rustup
+        git
+        jq
+        gcc
+        pkg-config
+        luajitPackages.jsregexp
+        cmake
+      ];
   };
 }

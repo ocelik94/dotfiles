@@ -2,7 +2,8 @@
 let
   biber217 = pkgs.callPackage ../../../pkgs/biber217.nix { };
   cfg = config.modules.programs.latex;
-in with lib; {
+in
+with lib; {
   options.modules.programs.latex = {
     enable = mkOption {
       type = types.bool;

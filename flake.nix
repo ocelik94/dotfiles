@@ -40,7 +40,8 @@
           awesome = nixpkgs-f2k.packages.x86_64-linux.awesome-luajit-git;
         })
       ];
-    in {
+    in
+    {
       nixosConfigurations = with inputs; {
         pr0ject = import ./host/pr0ject { inherit overlays inputs; };
         w0rk = import ./host/w0rk { inherit overlays inputs; };

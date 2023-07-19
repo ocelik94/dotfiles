@@ -312,7 +312,8 @@ let
         background-color:            @background-colour;
         text-color:                  @foreground-colour;
     }'';
-in with lib; {
+in
+with lib; {
   options.modules.programs.rofi = {
     enable = mkOption {
       type = types.bool;

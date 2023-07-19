@@ -21,7 +21,8 @@ let
     };
   };
 
-in perlPackages.buildPerlModule {
+in
+perlPackages.buildPerlModule {
   pname = "biber";
   inherit (biberSource) version;
 
