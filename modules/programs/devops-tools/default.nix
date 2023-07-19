@@ -16,6 +16,7 @@ in with lib; {
         terraform
         helm
         kubectl
+        lens
       ];
     };
   };
