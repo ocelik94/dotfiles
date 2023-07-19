@@ -1,14 +1,6 @@
-{ pkgs
-, lib
-, config
-, user
-, theme
-, ...
-}:
-let
-  cfg = config.modules.programs.vscode;
-in
-with lib; {
+{ pkgs, lib, config, user, theme, ... }:
+let cfg = config.modules.programs.vscode;
+in with lib; {
   options.modules.programs.vscode = {
     enable = mkOption {
       type = types.bool;
@@ -34,8 +26,8 @@ with lib; {
         git.confirmSync = false;
         git.enableSmartCommit = true;
         files.autoSave = "onFocusChange";
-        workbench.startupEditor =  "none";
-        security.workspace.trust.enabled =  false;
+        workbench.startupEditor = "none";
+        security.workspace.trust.enabled = false;
       };
     };
   };

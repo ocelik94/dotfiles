@@ -1,9 +1,4 @@
-{ pkgs
-, lib
-, config
-, theme
-, ...
-}:
+{ pkgs, lib, config, theme, ... }:
 let
   cfg = config.modules.programs.rofi;
 
@@ -317,8 +312,7 @@ let
         background-color:            @background-colour;
         text-color:                  @foreground-colour;
     }'';
-in
-with lib; {
+in with lib; {
   options.modules.programs.rofi = {
     enable = mkOption {
       type = types.bool;
@@ -328,11 +322,7 @@ with lib; {
   };
 
   config = mkIf cfg.enable {
-    home = {
-      packages = with pkgs; [
-        rofi-wayland
-      ];
-    };
+    home = { packages = with pkgs; [ rofi-wayland ]; };
     home.file.".config/rofi/config.rasi".text = roficfg;
   };
 }

@@ -1,17 +1,10 @@
-{ pkgs
-, config
-, lib
-, theme
-, user
-, inputs
-, ...
-}:
+{ pkgs, config, lib, theme, user, inputs, ... }:
 let
   cfg = config.modules.desktop.awesome;
   i3lockwconfig = import ./i3lock.nix { inherit pkgs theme; };
-  awesome_cfg = import ../../../configs/awesome { inherit inputs lib theme pkgs; };
-in
-with lib; {
+  awesome_cfg =
+    import ../../../configs/awesome { inherit inputs lib theme pkgs; };
+in with lib; {
   options.modules.desktop.awesome = {
     enable = mkOption {
       type = types.bool;
@@ -28,8 +21,8 @@ with lib; {
       timers = [
         {
           delay = 600;
-          command = "xrandr --output \"$PRIMARY_DISPLAY\" --brightness .1";
-          canceller = "xrandr --output \"$PRIMARY_DISPLAY\" --brightness 1";
+          command = ''xrandr --output "$PRIMARY_DISPLAY" --brightness .1'';
+          canceller = ''xrandr --output "$PRIMARY_DISPLAY" --brightness 1'';
         }
         {
           delay = 630;

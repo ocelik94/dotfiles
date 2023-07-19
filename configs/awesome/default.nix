@@ -1,9 +1,4 @@
-{ lib
-, pkgs
-, inputs
-, theme
-, ...
-}:
+{ lib, pkgs, inputs, theme, ... }:
 pkgs.stdenv.mkDerivation rec {
   name = "awesomerc";
 

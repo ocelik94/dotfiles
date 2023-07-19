@@ -1,4 +1,4 @@
-{theme}:
+{ theme }:
 with theme.colors; ''
   local act = wezterm.action
   local wezterm = require 'wezterm'
@@ -89,4 +89,4 @@ with theme.colors; ''
     enable_scroll_bar = true,
     keys = keybinds,
   }
-''  
+''

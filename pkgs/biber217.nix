@@ -1,9 +1,11 @@
 { lib, stdenv, fetchurl, fetchpatch, perlPackages, shortenPerlShebang, pkgs }:
 
 let
-  texlive_biber217 = (builtins.getFlake "github:NixOS/nixpkgs/40f79f003b6377bd2f4ed4027dde1f8f922995dd").legacyPackages.${pkgs.system}.texlive;
+  texlive_biber217 = (builtins.getFlake
+    "github:NixOS/nixpkgs/40f79f003b6377bd2f4ed4027dde1f8f922995dd").legacyPackages.${pkgs.system}.texlive;
 
-  biberSource = lib.head (builtins.filter (p: p.tlType == "source") texlive_biber217.biber.pkgs);
+  biberSource = lib.head
+    (builtins.filter (p: p.tlType == "source") texlive_biber217.biber.pkgs);
 
   # perl 5.32.0 ships with U:C 1.27
   UnicodeCollate_1_29 = perlPackages.buildPerlPackage rec {
@@ -18,9 +20,8 @@ let
       license = perlPackages.perl.meta.license;
     };
   };
-in
 
-perlPackages.buildPerlModule {
+in perlPackages.buildPerlModule {
   pname = "biber";
   inherit (biberSource) version;
 
@@ -29,19 +30,54 @@ perlPackages.buildPerlModule {
   patches = [
     # Perl 5.36.0 compatibility: https://github.com/plk/biber/pull/411
     (fetchpatch {
-      url = "https://github.com/plk/biber/commit/d9e961710074d266ad6bdf395c98868d91952088.patch";
+      url =
+        "https://github.com/plk/biber/commit/d9e961710074d266ad6bdf395c98868d91952088.patch";
       sha256 = "08fx7mvq78ndnj59xv3crncih7a8201rr31367kphysz2msjbj52";
     })
   ];
 
   buildInputs = with perlPackages; [
-    autovivification BusinessISBN BusinessISMN BusinessISSN ConfigAutoConf
-    DataCompare DataDump DateSimple EncodeEUCJPASCII EncodeHanExtra EncodeJIS2K
-    DateTime DateTimeFormatBuilder DateTimeCalendarJulian
-    ExtUtilsLibBuilder FileSlurper FileWhich IPCRun3 LogLog4perl LWPProtocolHttps ListAllUtils
-    ListMoreUtils MozillaCA ParseRecDescent IOString ReadonlyXS RegexpCommon TextBibTeX
-    UnicodeCollate_1_29 UnicodeLineBreak URI XMLLibXMLSimple XMLLibXSLT XMLWriter
-    ClassAccessor TextCSV TextCSV_XS TextRoman DataUniqid LinguaTranslit SortKey
+    autovivification
+    BusinessISBN
+    BusinessISMN
+    BusinessISSN
+    ConfigAutoConf
+    DataCompare
+    DataDump
+    DateSimple
+    EncodeEUCJPASCII
+    EncodeHanExtra
+    EncodeJIS2K
+    DateTime
+    DateTimeFormatBuilder
+    DateTimeCalendarJulian
+    ExtUtilsLibBuilder
+    FileSlurper
+    FileWhich
+    IPCRun3
+    LogLog4perl
+    LWPProtocolHttps
+    ListAllUtils
+    ListMoreUtils
+    MozillaCA
+    ParseRecDescent
+    IOString
+    ReadonlyXS
+    RegexpCommon
+    TextBibTeX
+    UnicodeCollate_1_29
+    UnicodeLineBreak
+    URI
+    XMLLibXMLSimple
+    XMLLibXSLT
+    XMLWriter
+    ClassAccessor
+    TextCSV
+    TextCSV_XS
+    TextRoman
+    DataUniqid
+    LinguaTranslit
+    SortKey
     TestDifferences
     PerlIOutf8_strict
   ];

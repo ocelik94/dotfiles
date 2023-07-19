@@ -1,14 +1,6 @@
-{ pkgs
-, lib
-, config
-, user
-, theme
-, ...
-}:
-let
-  cfg = config.modules.programs.brave;
-in
-with lib; {
+{ pkgs, lib, config, user, theme, ... }:
+let cfg = config.modules.programs.brave;
+in with lib; {
   options.modules.programs.brave = {
     enable = mkOption {
       type = types.bool;

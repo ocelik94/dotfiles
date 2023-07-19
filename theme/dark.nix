@@ -24,7 +24,8 @@ _: {
   brightaqua = "#88afa2";
   brightgray = "#AFAFAF";
   wallpaper = builtins.fetchurl {
-    url = "https://gitlab.projectoc.de/dotfiles/awesome/raw/main/assets/wallpaper.png";
+    url =
+      "https://gitlab.projectoc.de/dotfiles/awesome/raw/main/assets/wallpaper.png";
     sha256 = "sha256:0kzg6a5538hsqjdpnfhqrwhmi7kbkhdxzk8yj1cxssb3bwrydpcr";
   };
   name = {

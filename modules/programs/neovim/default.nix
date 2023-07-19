@@ -1,13 +1,6 @@
-{ pkgs
-, config
-, lib
-, inputs
-, ...
-}:
-let
-  cfg = config.modules.programs.neovim;
-in
-with lib; {
+{ pkgs, config, lib, inputs, ... }:
+let cfg = config.modules.programs.neovim;
+in with lib; {
   options.modules.programs.neovim = {
     enable = mkOption {
       type = types.bool;
@@ -18,10 +11,11 @@ with lib; {
 
   config = mkIf cfg.enable {
     home = {
-      packages = with pkgs; [
-        # neovim-unwrapped
-        neovim
-      ];
+      packages = with pkgs;
+        [
+          # neovim-unwrapped
+          neovim
+        ];
     };
   };
 }

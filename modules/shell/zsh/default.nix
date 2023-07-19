@@ -1,15 +1,6 @@
-{ pkgs
-, user
-, theme
-, config
-, lib
-, inputs
-, ...
-}:
-let
-  cfg = config.modules.shell.zsh;
-in
-with lib; {
+{ pkgs, user, theme, config, lib, inputs, ... }:
+let cfg = config.modules.shell.zsh;
+in with lib; {
   options.modules.shell.zsh = {
     enable = mkOption {
       type = types.bool;
@@ -42,25 +33,21 @@ with lib; {
 
           export EDITOR="nvim"
         '';
-        initExtra =
-          let
-            p10k = ''
-              ZSH_THEME="powerlevel10k/powerlevel10k"
-              [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-            '';
-          in
-          with theme.colors;
-          ''
-            export FZF_DEFAULT_OPTS="--layout=reverse"\
-            " --color=bg+:${background2},bg:${background},spinner:${brightred},hl:${brightblack}"\
-            " --color=fg:${foreground},header:${brightblack},info:${brightaqua},pointer:${brightred}"\
-            " --color=marker:${brightred},fg+:${foreground},prompt:${brightred},hl+:${brightred}"
-          ''
-          + (
-            p10k
-          );
+        initExtra = let
+          p10k = ''
+            ZSH_THEME="powerlevel10k/powerlevel10k"
+            [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+          '';
+        in with theme.colors;
+        ''
+          export FZF_DEFAULT_OPTS="--layout=reverse"\
+          " --color=bg+:${background2},bg:${background},spinner:${brightred},hl:${brightblack}"\
+          " --color=fg:${foreground},header:${brightblack},info:${brightaqua},pointer:${brightred}"\
+          " --color=marker:${brightred},fg+:${foreground},prompt:${brightred},hl+:${brightred}"
+        '' + (p10k);
         shellAliases = {
-          nixr = "sudo nixos-rebuild switch --flake https://gitlab.projectoc.de/dotfiles/flake#pr0ject";
+          nixr =
+            "sudo nixos-rebuild switch --flake https://gitlab.projectoc.de/dotfiles/flake#pr0ject";
           nixc = "sudo nix-collect-garbage --delete-older-than 2d";
           e = "${pkgs.neovim}/bin/nvim ./";
           f = "${pkgs.ranger}/bin/ranger";
@@ -76,34 +63,31 @@ with lib; {
             { name = "zsh-users/zsh-autosuggestions"; }
             { name = "zsh-users/zsh-completions"; }
             { name = "zsh-users/zsh-syntax-highlighting"; }
-            { name = "plugins/sudo"; tags = [ from:oh-my-zsh ]; }
+            {
+              name = "plugins/sudo";
+              tags = [ "from:oh-my-zsh" ];
+            }
           ];
         };
-        plugins =
-          [
-            {
-              name = "zsh-nix-shell";
-              file = "nix-shell.plugin.zsh";
-              src = pkgs.fetchFromGitHub {
-                owner = "chisui";
-                repo = "zsh-nix-shell";
-                rev = "v0.7.0";
-                sha256 = "sha256-oQpYKBt0gmOSBgay2HgbXiDoZo5FoUKwyHSlUrOAP5E=";
-              };
-            }
-          ] ++
-          [
-            {
-              name = "powerlevel10k";
-              file = "powerlevel10k.zsh-theme";
-              src = pkgs.fetchFromGitHub {
-                owner = "romkatv";
-                repo = "powerlevel10k";
-                rev = "v1.19.0";
-                sha256 = "sha256-fgrwbWj6CcPoZ6GbCZ47HRUg8ZSJWOsa7aipEqYuE0Q=";
-              };
-            }
-          ];
+        plugins = [{
+          name = "zsh-nix-shell";
+          file = "nix-shell.plugin.zsh";
+          src = pkgs.fetchFromGitHub {
+            owner = "chisui";
+            repo = "zsh-nix-shell";
+            rev = "v0.7.0";
+            sha256 = "sha256-oQpYKBt0gmOSBgay2HgbXiDoZo5FoUKwyHSlUrOAP5E=";
+          };
+        }] ++ [{
+          name = "powerlevel10k";
+          file = "powerlevel10k.zsh-theme";
+          src = pkgs.fetchFromGitHub {
+            owner = "romkatv";
+            repo = "powerlevel10k";
+            rev = "v1.19.0";
+            sha256 = "sha256-fgrwbWj6CcPoZ6GbCZ47HRUg8ZSJWOsa7aipEqYuE0Q=";
+          };
+        }];
       };
     };
 

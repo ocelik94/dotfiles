@@ -1,12 +1,6 @@
-{ pkgs
-, config
-, lib
-, ...
-}:
-let
-  cfg = config.modules.services.picom;
-in
-with lib; {
+{ pkgs, config, lib, ... }:
+let cfg = config.modules.services.picom;
+in with lib; {
   options.modules.services.picom = {
     enable = mkOption {
       type = types.bool;

@@ -1,12 +1,6 @@
-{ pkgs
-, config
-, lib
-, ...
-}:
-let
-  cfg = config.modules.services.polkit;
-in
-with lib; {
+{ pkgs, config, lib, ... }:
+let cfg = config.modules.services.polkit;
+in with lib; {
   options.modules.services.polkit = {
     enable = mkOption {
       type = types.bool;
@@ -17,10 +11,11 @@ with lib; {
 
   config = mkIf cfg.enable {
     home = {
-      packages = with pkgs; [
-        libsForQt5.polkit-kde-agent
-        # polkit_gnome
-      ];
+      packages = with pkgs;
+        [
+          libsForQt5.polkit-kde-agent
+          # polkit_gnome
+        ];
     };
 
     systemd.user.services.polkit-gnome-authentication-agent-1 = {
@@ -33,7 +28,8 @@ with lib; {
       Install.WantedBy = [ "graphical-session.target" ];
 
       Service = {
-        ExecStart = "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1";
+        ExecStart =
+          "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1";
         Restart = "on-failure";
       };
     };

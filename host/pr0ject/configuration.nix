@@ -1,25 +1,14 @@
-{ pkgs
-, lib
-, inputs
-, theme
-, user
-, ...
-}:
-let
-  sddm-theme = pkgs.callPackage ../../pkgs/sddmtheme.nix { };
-in
-{
-  imports = [
-    ./fontconfig.nix
-    ./extra-settings.nix
-    ./hardware-configuration.nix
-  ];
+{ pkgs, lib, inputs, theme, user, ... }:
+let sddm-theme = pkgs.callPackage ../../pkgs/sddmtheme.nix { };
+in {
+  imports =
+    [ ./fontconfig.nix ./extra-settings.nix ./hardware-configuration.nix ];
 
   boot = {
     supportedFilesystems = [ "ntfs" ];
     kernelPackages = pkgs.linuxPackages_latest;
-    blacklistedKernelModules = ["nouveau" "i2c_nvidia_gpu"];
-    kernelParams = ["quiet" "acpi_osi=!"];
+    blacklistedKernelModules = [ "nouveau" "i2c_nvidia_gpu" ];
+    kernelParams = [ "quiet" "acpi_osi=!" ];
     loader = {
       timeout = 5;
       efi = {
@@ -44,9 +33,7 @@ in
     proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   };
 
-  virtualisation = {
-    docker.enable = true;
-  };
+  virtualisation = { docker.enable = true; };
 
   time.timeZone = "Europe/Berlin";
 
@@ -56,43 +43,25 @@ in
     font = "ter-u28b";
     useXkbConfig = true;
     earlySetup = true;
-    colors =
-      let
-        substr = str: lib.strings.removePrefix "#" str;
-      in
-      with theme.colors; [
-        (substr black)
-        (substr red)
-        (substr green)
-        (substr yellow)
-        (substr blue)
-        (substr purple)
-        (substr aqua)
-        (substr gray)
-        (substr brightblack)
-        (substr brightred)
-        (substr brightgreen)
-        (substr brightyellow)
-        (substr brightblue)
-        (substr brightpurple)
-        (substr brightaqua)
-        (substr brightgray)
-      ];
-  };
-
-  # causes conflicts with pipewire
-  # sound.enable = true;
-
-  hardware = {
-    pulseaudio.enable = false;
-    bluetooth = {
-      enable = false;
-      settings = {
-        General = {
-          Enable = "Source,Sink,Media,Socket";
-        };
-      };
-    };
+    colors = let substr = str: lib.strings.removePrefix "#" str;
+    in with theme.colors; [
+      (substr black)
+      (substr red)
+      (substr green)
+      (substr yellow)
+      (substr blue)
+      (substr purple)
+      (substr aqua)
+      (substr gray)
+      (substr brightblack)
+      (substr brightred)
+      (substr brightgreen)
+      (substr brightyellow)
+      (substr brightblue)
+      (substr brightpurple)
+      (substr brightaqua)
+      (substr brightgray)
+    ];
   };
 
   users.users.${user} = {
@@ -101,39 +70,31 @@ in
     shell = pkgs.zsh;
   };
 
-  programs.zsh.enable = true;
-
-  programs._1password = {
-    enable = true;
-  };
-
-  programs._1password-gui = {
-    enable = true;
-    polkitPolicyOwners = ["ocelik"];
-  };
-
-  services.gnome.gnome-keyring.enable = true;
-
-  programs.git = {
-    enable = true;
-    package = pkgs.gitFull;
-    config = {
-      user = {
-        email = "okan@celik.tech";
-        name = "Okan Celik";
-        signingkey = "7D279ED727E5D470";
-      };
-      init.defaultBranch = "main";
-      commit.gpgsign = "true";
-      credential.helper = "libsecret";
+  programs = {
+    zsh.enable = true;
+    _1password = { enable = true; };
+    _1password-gui = {
+      enable = true;
+      polkitPolicyOwners = [ "ocelik" ];
     };
+    git = {
+      enable = true;
+      package = pkgs.gitFull;
+      config = {
+        user = {
+          email = "okan@celik.tech";
+          name = "Okan Celik";
+          signingkey = "7D279ED727E5D470";
+        };
+        init.defaultBranch = "main";
+        commit.gpgsign = "true";
+        credential.helper = "libsecret";
+      };
+    };
+    ssh.askPassword = "";
   };
 
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
-
-  programs.ssh.askPassword = "";
+  nixpkgs.config = { allowUnfree = true; };
 
   environment = {
     sessionVariables = rec {
@@ -171,45 +132,47 @@ in
   };
 
   services = {
+    gnome.gnome-keyring.enable = true;
     blueman.enable = false;
     fstrim.enable = true;
     dbus.enable = true;
     gvfs.enable = true;
   };
 
+  hardware = {
+    opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+      extraPackages = with pkgs; [
+        vaapiVdpau
+        libvdpau-va-gl
+        nvidia-vaapi-driver
+      ];
+    };
+    nvidia = {
+      powerManagement.enable = true;
+      nvidiaSettings = true;
+      nvidiaPersistenced = true;
+      modesetting.enable = true;
+      open = false;
+    };
 
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-    extraPackages = with pkgs; [
-      vaapiVdpau
-      libvdpau-va-gl
-      nvidia-vaapi-driver
-    ];
+    pulseaudio.enable = false;
+    bluetooth = {
+      enable = false;
+      settings = { General = { Enable = "Source,Sink,Media,Socket"; }; };
+    };
   };
-  hardware.nvidia.powerManagement.enable = true;
-  hardware.nvidia.nvidiaSettings = true;
-  hardware.nvidia.nvidiaPersistenced = true;
-  hardware.nvidia.modesetting.enable = true;
-  hardware.nvidia.open = false;
 
   services = {
     xserver = {
       enable = true;
       layout = "eu";
       videoDrivers = [ "nvidia" ];
-      desktopManager = {
-        xfce.enable = false;
-      };
-      windowManager = {
-        awesome = {
-          enable = true;
-        };
-      };
-      desktopManager = {
-        xterm.enable = false;
-      };
+      desktopManager = { xfce.enable = false; };
+      windowManager = { awesome = { enable = true; }; };
+      desktopManager = { xterm.enable = false; };
       imwheel.enable = true;
       displayManager = {
         startx.enable = true;
@@ -221,7 +184,7 @@ in
           LEFT='DP-0'
           RIGHT='DP-2'
           ${pkgs.xorg.xrandr}/bin/xrandr --output $LEFT --left-of $RIGHT --mode 2560x1440 --rate 165 --output $RIGHT --primary --mode 2560x1440 --rate 165 
-      '';
+        '';
       };
       libinput = {
         enable = true;
@@ -230,7 +193,6 @@ in
         touchpad.naturalScrolling = true;
       };
     };
-    # sound
     pipewire = {
       enable = true;
       audio.enable = true;

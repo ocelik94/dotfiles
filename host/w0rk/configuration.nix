@@ -1,24 +1,13 @@
-{ pkgs
-, lib
-, inputs
-, theme
-, user
-, ...
-}:
-let
-  sddm-theme = pkgs.callPackage ../../pkgs/sddmtheme.nix { };
-in
-{
-  imports = [
-    ./fontconfig.nix
-    ./extra-settings.nix
-    ./hardware-configuration.nix
-  ];
+{ pkgs, lib, inputs, theme, user, ... }:
+let sddm-theme = pkgs.callPackage ../../pkgs/sddmtheme.nix { };
+in {
+  imports =
+    [ ./fontconfig.nix ./extra-settings.nix ./hardware-configuration.nix ];
 
   boot = {
     supportedFilesystems = [ "ntfs" ];
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelParams = ["quiet"];
+    kernelParams = [ "quiet" ];
     loader = {
       timeout = 5;
       efi = {
@@ -41,9 +30,7 @@ in
     proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   };
 
-  virtualisation = {
-    docker.enable = true;
-  };
+  virtualisation = { docker.enable = true; };
 
   time.timeZone = "Europe/Berlin";
 
@@ -53,28 +40,25 @@ in
     font = "ter-u28b";
     useXkbConfig = true;
     earlySetup = true;
-    colors =
-      let
-        substr = str: lib.strings.removePrefix "#" str;
-      in
-      with theme.colors; [
-        (substr black)
-        (substr red)
-        (substr green)
-        (substr yellow)
-        (substr blue)
-        (substr purple)
-        (substr aqua)
-        (substr gray)
-        (substr brightblack)
-        (substr brightred)
-        (substr brightgreen)
-        (substr brightyellow)
-        (substr brightblue)
-        (substr brightpurple)
-        (substr brightaqua)
-        (substr brightgray)
-      ];
+    colors = let substr = str: lib.strings.removePrefix "#" str;
+    in with theme.colors; [
+      (substr black)
+      (substr red)
+      (substr green)
+      (substr yellow)
+      (substr blue)
+      (substr purple)
+      (substr aqua)
+      (substr gray)
+      (substr brightblack)
+      (substr brightred)
+      (substr brightgreen)
+      (substr brightyellow)
+      (substr brightblue)
+      (substr brightpurple)
+      (substr brightaqua)
+      (substr brightgray)
+    ];
   };
 
   # causes conflicts with pipewire
@@ -84,11 +68,7 @@ in
     pulseaudio.enable = false;
     bluetooth = {
       enable = false;
-      settings = {
-        General = {
-          Enable = "Source,Sink,Media,Socket";
-        };
-      };
+      settings = { General = { Enable = "Source,Sink,Media,Socket"; }; };
     };
   };
 
@@ -100,13 +80,11 @@ in
 
   programs.zsh.enable = true;
 
-  programs._1password = {
-    enable = true;
-  };
+  programs._1password = { enable = true; };
 
   programs._1password-gui = {
     enable = true;
-    polkitPolicyOwners = ["ocelik"];
+    polkitPolicyOwners = [ "ocelik" ];
   };
 
   services.gnome.gnome-keyring.enable = true;
@@ -126,9 +104,7 @@ in
     };
   };
 
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
+  nixpkgs.config = { allowUnfree = true; };
 
   programs.ssh.askPassword = "";
 
@@ -174,7 +150,6 @@ in
     gvfs.enable = true;
   };
 
-
   hardware.opengl = {
     enable = true;
     driSupport = true;
@@ -188,17 +163,9 @@ in
       enable = true;
       layout = "eu";
       videoDrivers = [ "amdgpu" ];
-      desktopManager = {
-        xfce.enable = false;
-      };
-      windowManager = {
-        awesome = {
-          enable = true;
-        };
-      };
-      desktopManager = {
-        xterm.enable = false;
-      };
+      desktopManager = { xfce.enable = false; };
+      windowManager = { awesome = { enable = true; }; };
+      desktopManager = { xterm.enable = false; };
       displayManager = {
         startx.enable = true;
         sddm = {
@@ -209,7 +176,7 @@ in
         #  LEFT='DP-0'
         #  RIGHT='DP-2'
         #  ${pkgs.xorg.xrandr}/bin/xrandr --output $LEFT --left-of $RIGHT --mode 2560x1440 --rate 165 --output $RIGHT --primary --mode 2560x1440 --rate 165 
-      #'';
+        #'';
       };
       libinput = {
         enable = true;

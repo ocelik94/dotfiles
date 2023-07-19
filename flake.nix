@@ -1,13 +1,11 @@
- {
+{
   description = "A very basic flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     #nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
 
-    nur = {
-      url = "github:nix-community/NUR";
-    };
+    nur = { url = "github:nix-community/NUR"; };
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -29,7 +27,7 @@
 
   };
 
-  outputs = inputs @ { self, ... }:
+  outputs = inputs@{ self, ... }:
     let
       system = "x86_64-linux";
 
@@ -42,15 +40,10 @@
           awesome = nixpkgs-f2k.packages.x86_64-linux.awesome-luajit-git;
         })
       ];
-    in
-    {
+    in {
       nixosConfigurations = with inputs; {
-        pr0ject = import ./host/pr0ject {
-          inherit overlays inputs;
-        };
-        w0rk = import ./host/w0rk {
-          inherit overlays inputs;
-        };
+        pr0ject = import ./host/pr0ject { inherit overlays inputs; };
+        w0rk = import ./host/w0rk { inherit overlays inputs; };
       };
     };
 }
