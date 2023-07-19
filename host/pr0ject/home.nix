@@ -52,6 +52,8 @@
         pkg-config
         luajitPackages.jsregexp
         cmake
+        python311
+        poetry
       ];
   };
 }
