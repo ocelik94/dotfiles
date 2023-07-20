@@ -23,6 +23,16 @@
     awesomerc = {
       url = "git+https://gitlab.projectoc.de/dotfiles/awesome.git";
       flake = false;
+    }; 
+    
+    astronvim = {
+      url = "git+https://github.com/AstroNvim/AstroNvim.git";
+      flake = false;
+    };
+
+    neovim-dotfiles = {
+      url = "git+https://gitlab.projectoc.de/dotfiles/neovim.git";
+      flake = false;
     };
 
   };
