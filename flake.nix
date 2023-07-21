@@ -55,6 +55,7 @@
       nixosConfigurations = with inputs; {
         pr0ject = import ./host/pr0ject { inherit overlays inputs; };
         w0rk = import ./host/w0rk { inherit overlays inputs; };
+        vmb0x = import ./host/vmb0x { inherit overlays inputs; };
       };
     };
 }
