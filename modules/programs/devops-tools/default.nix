@@ -17,6 +17,7 @@ in with lib; {
         helm
         kubectl
         lens
+        azure-cli
       ];
     };
   };

@@ -19,6 +19,7 @@ in with lib; {
         james-yu.latex-workshop
         eamodio.gitlens
         valentjn.vscode-ltex
+        hashicorp.terraform
       ];
       userSettings = {
         editor.fontFamily = "RobotoMono Nerd Font Mono";
