@@ -152,11 +152,8 @@ in {
       ];
     };
     nvidia = {
-      powerManagement.enable = true;
       nvidiaSettings = true;
-      nvidiaPersistenced = true;
-      modesetting.enable = true;
-      open = false;
+      open = true;
     };
 
     pulseaudio.enable = false;
