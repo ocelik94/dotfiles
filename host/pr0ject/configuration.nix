@@ -115,6 +115,13 @@ in {
       usbutils
       ffmpeg
       htop
+      clinfo
+      glxinfo
+      vulkan-tools
+      vulkan-loader
+      vulkan-validation-layers
+      libva
+      libva-utils
 
       # compression
       p7zip
@@ -148,12 +155,16 @@ in {
       extraPackages = with pkgs; [
         vaapiVdpau
         libvdpau-va-gl
+        libva
         nvidia-vaapi-driver
       ];
     };
     nvidia = {
       nvidiaSettings = true;
+      nvidiaPersistenced = true;
+      modesetting.enable = true;
       open = true;
+      powerManagement.enable = true;
     };
 
     pulseaudio.enable = false;

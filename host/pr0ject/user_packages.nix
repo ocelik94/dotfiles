@@ -28,7 +28,7 @@ in
       devops-tools.enable = true;
     };
     services = {
-      picom.enable = true;
+      picom.enable = false;
       polkit.enable = true;
     };
     shell = { zsh.enable = true; };
