@@ -18,6 +18,7 @@ in with lib; {
         kubectl
         lens
         azure-cli
+        drawio
       ];
     };
   };
