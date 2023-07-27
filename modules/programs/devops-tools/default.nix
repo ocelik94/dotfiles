@@ -19,6 +19,7 @@ in with lib; {
         lens
         azure-cli
         drawio
+        jetbrains-toolbox
       ];
     };
   };
