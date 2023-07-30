@@ -7,11 +7,12 @@ let
         (builtins.readDir path)));
   shell = getDirfolders ../../modules/shell;
   desktop = getDirfolders ../../modules/desktop;
+  games = getDirfolders ../../modules/games;
   programs = getDirfolders ../../modules/programs;
   services = getDirfolders ../../modules/services;
 in
 {
-  imports = [ ./home.nix ] ++ desktop ++ programs ++ services ++ shell;
+  imports = [ ./home.nix ] ++ desktop ++ programs ++ games ++ services ++ shell;
 
   config.modules = rec {
     desktop = {
@@ -26,6 +27,9 @@ in
       brave.enable = true;
       latex.enable = true;
       devops-tools.enable = true;
+    };
+    games = {
+      minecraft.enable = true;
     };
     services = {
       picom.enable = false;
