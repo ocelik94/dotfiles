@@ -13,8 +13,8 @@ in with lib; {
     home = {
       packages = with pkgs;
         [
-          libsForQt5.polkit-kde-agent
-          # polkit_gnome
+          # libsForQt5.polkit-kde-agent
+          polkit_gnome
         ];
     };
 
@@ -29,7 +29,7 @@ in with lib; {
 
       Service = {
         ExecStart =
-          "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1";
+          "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
         Restart = "on-failure";
       };
     };
