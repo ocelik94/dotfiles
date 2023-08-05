@@ -16,7 +16,7 @@ with lib; {
     programs.wezterm = {
       enable = true;
       colorSchemes = {
-        nixtheme = with theme.colors; {
+        nixtheme = with theme; {
           ansi = [ black red green yellow blue purple aqua gray ];
           brights = [
             brightblack

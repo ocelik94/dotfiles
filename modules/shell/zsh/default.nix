@@ -40,7 +40,7 @@ in with lib; {
               [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
             '';
           in
-          with theme.colors;
+          with theme;
           ''
             export FZF_DEFAULT_OPTS="--layout=reverse"\
             " --color=bg+:${background2},bg:${background},spinner:${brightred},hl:${brightblack}"\

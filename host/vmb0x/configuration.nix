@@ -1,13 +1,12 @@
-{ pkgs, lib, inputs, theme, user, ... }:
-let sddm-theme = pkgs.callPackage ../../pkgs/sddmtheme.nix { };
-in {
+{ pkgs, ... }:
+{
   imports =
-    [ ./fontconfig.nix ./extra-settings.nix ./hardware-configuration.nix ];
-
+    [ ./hardware-configuration.nix ];
   boot = {
     supportedFilesystems = [ "ntfs" ];
-    kernelPackages = pkgs.linuxPackages_5_4;
-    kernelParams = [ "quiet" ];
+    kernelPackages = pkgs.linuxPackages_latest;
+    blacklistedKernelModules = [ "nouveau" "i2c_nvidia_gpu" ];
+    kernelParams = [ "quiet" "acpi_osi=!" ];
     loader = {
       timeout = 5;
       efi = {
@@ -16,6 +15,7 @@ in {
       };
       grub = {
         enable = true;
+        gfxmodeEfi = "2560x1440";
         devices = [ "nodev" ];
         efiSupport = true;
         useOSProber = true;
@@ -32,115 +32,11 @@ in {
     proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   };
 
-  virtualisation = { 
-    docker.enable = true;
-    vmware.guest.enable = true;
-  };
+  virtualisation = { docker.enable = true; };
 
   time.timeZone = "Europe/Berlin";
-
   i18n.defaultLocale = "en_US.UTF-8";
-  console = {
-    packages = with pkgs; [ terminus_font ];
-    font = "ter-u28b";
-    useXkbConfig = true;
-    earlySetup = true;
-    colors =
-      let substr = str: lib.strings.removePrefix "#" str;
-      in with theme.colors; [
-        (substr black)
-        (substr red)
-        (substr green)
-        (substr yellow)
-        (substr blue)
-        (substr purple)
-        (substr aqua)
-        (substr gray)
-        (substr brightblack)
-        (substr brightred)
-        (substr brightgreen)
-        (substr brightyellow)
-        (substr brightblue)
-        (substr brightpurple)
-        (substr brightaqua)
-        (substr brightgray)
-      ];
-  };
-
-  users.users.${user} = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "video" "audio" "users" "docker" ];
-    shell = pkgs.zsh;
-  };
-
-  programs = {
-    zsh.enable = true;
-    _1password = { enable = true; };
-    _1password-gui = {
-      enable = true;
-      polkitPolicyOwners = [ "ocelik" ];
-    };
-    git = {
-      enable = true;
-      package = pkgs.gitFull;
-      config = {
-        user = {
-          email = "okan@celik.tech";
-          name = "Okan Celik";
-          signingkey = "7D279ED727E5D470";
-        };
-        init.defaultBranch = "main";
-        commit.gpgsign = "true";
-        credential.helper = "libsecret";
-      };
-    };
-    ssh.askPassword = "";
-  };
-
-  nixpkgs.config = { allowUnfree = true; };
-
-  environment = {
-    sessionVariables = rec {
-      QT_QPA_PLATFORMTHEME = "qt5ct";
-      EDITOR = "nvim";
-    };
-
-    systemPackages = with pkgs; [
-      # program
-      _1password
-      _1password-gui
-
-      # system
-      pulseaudio
-      ntfs3g
-      alsa-utils
-      usbutils
-      ffmpeg
-      htop
-
-      # compression
-      p7zip
-      unrar
-      unzip
-      exfat
-      zip
-
-      sddm-theme
-    ];
-  };
-
-  security = {
-    polkit.enable = true;
-    rtkit.enable = true;
-  };
-
-  services = {
-    gnome.gnome-keyring.enable = true;
-    blueman.enable = false;
-    fstrim.enable = true;
-    dbus.enable = true;
-    gvfs.enable = true;
-  };
+  
 
   hardware = {
     opengl = {
@@ -148,10 +44,18 @@ in {
       driSupport = true;
       driSupport32Bit = true;
       extraPackages = with pkgs; [
-        mesa.drivers
-        libglvnd
-        libGL
+        vaapiVdpau
+        libvdpau-va-gl
+        libva
+        nvidia-vaapi-driver
       ];
+    };
+    nvidia = {
+      nvidiaSettings = true;
+      nvidiaPersistenced = true;
+      modesetting.enable = true;
+      open = true;
+      powerManagement.enable = true;
     };
 
     pulseaudio.enable = false;
@@ -161,39 +65,24 @@ in {
     };
   };
 
-  services = {
-    xserver = {
-      enable = true;
-      layout = "eu";
-      videoDrivers = [ "vmware" ];
-      desktopManager = { xfce.enable = false; };
-      windowManager = { awesome = { enable = true; }; };
-      desktopManager = { xterm.enable = false; };
-      imwheel.enable = true;
-      displayManager = {
-        startx.enable = true;
-        sddm = {
-          enable = true;
-          theme = "Psion";
-        };
-      };
-      libinput = {
-        enable = true;
-        mouse.accelProfile = "flat";
-        mouse.accelSpeed = "0";
-        touchpad.naturalScrolling = true;
-      };
+  nix = {
+    package = pkgs.nixFlakes;
+    settings = {
+      substituters = [
+        "https://cache.nixos.org?priority=10"
+        "https://fortuneteller2k.cachix.org"
+      ];
+      trusted-public-keys = [
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+        "fortuneteller2k.cachix.org-1:kXXNkMV5yheEQwT0I4XYh1MaCSz+qg72k8XAi2PthJI="
+      ];
+      experimental-features = [ "nix-command" "flakes" ];
+      auto-optimise-store = true;
     };
-    pipewire = {
-      enable = true;
-      audio.enable = true;
-      alsa = {
-        enable = true;
-        support32Bit = true;
-      };
-      wireplumber.enable = true;
-      pulse.enable = true;
-      jack.enable = true;
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
     };
   };
 

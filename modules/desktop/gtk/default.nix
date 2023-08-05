@@ -1,18 +1,24 @@
-{ pkgs, config, lib, theme, user, ... }:
-let
-  oomox = pkgs.callPackage ../../../pkgs/themix-gui.nix { inherit theme; };
+{
+  pkgs,
+  config,
+  lib,
+  theme,
+  user,
+  ...
+}: let
+  oomox = pkgs.callPackage ../../../pkgs/themix-gui.nix {inherit theme;};
   cfg = config.modules.desktop.gtk;
 
   kvtheme = ''
     [General]
-    theme=${theme.colors.name.kvantum}
+    theme=${theme.name.kvantum}
   '';
 
-  qt5ct = with theme.colors; ''
+  qt5ct = with theme; ''
     [Appearance]
     color_scheme_path=/home/${user}/.config/qt5ct/colors/numix.conf
     custom_palette=true
-    icon_theme=${theme.colors.name.icon}
+    icon_theme=${theme.name.icon}
     standard_dialogs=default
     style=${name.qt_style}
 
@@ -43,27 +49,26 @@ let
     ignored_applications=@Invalid()
   '';
 
-  rgbpallete =
-    let
-      split = float: builtins.head (lib.strings.splitString "." float);
-      split_all = data:
-        lib.attrsets.mapAttrs (_: value: split (toString value)) data;
-    in
+  rgbpallete = let
+    split = float: builtins.head (lib.strings.splitString "." float);
+    split_all = data: lib.attrsets.mapAttrs (_: value: split (toString value)) data;
+  in
     with pkgs.lib.nix-rice; {
-      black = split_all (color.hexToRgba theme.colors.black);
-      bg = split_all (color.hexToRgba theme.colors.background);
-      altbg = split_all (color.hexToRgba theme.colors.background2);
-      fg = split_all (color.hexToRgba theme.colors.foreground);
-      fginactive = split_all (color.hexToRgba theme.colors.brightgray);
-      green = split_all (color.hexToRgba theme.colors.green);
-      brightgreen = split_all (color.hexToRgba theme.colors.brightgreen);
-      brightred = split_all (color.hexToRgba theme.colors.brightred);
-      orange = split_all (color.hexToRgba theme.colors.brightred);
+      black = split_all (color.hexToRgba theme.black);
+      bg = split_all (color.hexToRgba theme.background);
+      altbg = split_all (color.hexToRgba theme.background2);
+      fg = split_all (color.hexToRgba theme.foreground);
+      fginactive = split_all (color.hexToRgba theme.brightgray);
+      green = split_all (color.hexToRgba theme.green);
+      brightgreen = split_all (color.hexToRgba theme.brightgreen);
+      brightred = split_all (color.hexToRgba theme.brightred);
+      orange = split_all (color.hexToRgba theme.brightred);
     };
 
-  kdeglobal =
-    let rgb_str = rgb_map: "${rgb_map.r},${rgb_map.g},${rgb_map.b}";
-    in with rgbpallete; ''
+  kdeglobal = let
+    rgb_str = rgb_map: "${rgb_map.r},${rgb_map.g},${rgb_map.b}";
+  in
+    with rgbpallete; ''
       [Colors:View]
       BackgroundAlternate=${rgb_str altbg}
       BackgroundNormal=${rgb_str bg}
@@ -131,38 +136,35 @@ with lib; {
         gtk.enable = true;
         x11.enable = true;
       };
-      sessionVariables = { GTK_THEME = "${theme.colors.name.gtk}"; };
+      sessionVariables = {
+        GTK_THEME = "${theme.name.gtk}";
+      };
     };
 
-    gtk = with theme.colors; {
+    gtk = with theme; {
       enable = true;
       gtk3.extraConfig = {
         gtk-xft-antialias = 1;
         gtk-xft-hinting = 1;
         gtk-xft-hintstyle = "hintslight";
         gtk-xft-rgba = "rgb";
-        gtk-application-prefer-dark-theme = 1;
+        # gtk-application-prefer-dark-theme = 1;
       };
       font = {
         name = "Roboto";
         size = 10;
       };
       theme.name = name.gtk;
-      iconTheme = { name = name.icon; };
+      iconTheme = {
+        name = name.icon;
+      };
       cursorTheme = {
         package = pkgs.phinger-cursors;
         name = "phinger-cursors";
         size = 24;
       };
     };
-    qt = with theme.colors; {
-      enable = true;
-      # gtk, gnome, lxqt, qt5ct, kde
-      # platformTheme = "gnome";
-      # style = {
-      #   name = "${name.qt_style}";
-      # };
-    };
+    qt.enable = true;
     home.file.".config/Kvantum/kvantum.kvconfig".text = kvtheme;
     home.file.".config/qt5ct/qt5ct.conf".text = qt5ct;
     home.file.".config/kdeglobals".text = kdeglobal;

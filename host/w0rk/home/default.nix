@@ -1,20 +1,20 @@
-{ user, config, lib, ... }:
+{ lib, ... }:
 let
   # returns list of all folders in path
-  getDirfolders = path:
+  get_dir = path:
     (lib.attrsets.mapAttrsToList (name: _: path + ("/" + name))
       (lib.attrsets.filterAttrs (name: value: value == "directory")
         (builtins.readDir path)));
-  shell = getDirfolders ../../modules/shell;
-  desktop = getDirfolders ../../modules/desktop;
-  games = getDirfolders ../../modules/games;
-  programs = getDirfolders ../../modules/programs;
-  services = getDirfolders ../../modules/services;
+  shell = get_dir ../../../modules/shell;
+  desktop = get_dir ../../../modules/desktop;
+  games = get_dir ../../../modules/games;
+  programs = get_dir ../../../modules/programs;
+  services = get_dir ../../../modules/services;
 in
 {
   imports = [ ./home.nix ] ++ desktop ++ programs ++ games ++ services ++ shell;
 
-  config.modules = rec {
+  config.modules = {
     desktop = {
       awesome.enable = true;
       gtk.enable = true;

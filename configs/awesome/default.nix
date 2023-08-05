@@ -11,10 +11,10 @@ pkgs.stdenv.mkDerivation rec {
     cp -r ${src}/* $out/awesome
 
     substituteInPlace $out/awesome/theme/pallete.lua \
-      --replace "dark" "${theme.colors.name.theme}"
+      --replace "dark" "${theme.name.theme}"
 
     substituteInPlace $out/awesome/theme/init.lua \
-      --replace "Roboto" "${theme.colors.name.font}" \
-      --replace "RobotoMono Nerd Font" "${theme.colors.name.fontmonospace}"
+      --replace "Roboto" "${theme.name.font}" \
+      --replace "RobotoMono Nerd Font" "${theme.name.fontmonospace}"
   '';
 }

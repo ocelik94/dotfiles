@@ -22,6 +22,7 @@
         gh-dash
         lxqt.pcmanfm-qt
         libsForQt5.ark
+        direnv
 
         # General
         networkmanagerapplet

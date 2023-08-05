@@ -22,6 +22,7 @@
         gh-dash
         lxqt.pcmanfm-qt
         libsForQt5.ark
+        direnv
 
         # General
         networkmanagerapplet
@@ -52,6 +53,8 @@
         pkg-config
         luajitPackages.jsregexp
         cmake
+        python311
+        poetry
       ];
   };
 }
