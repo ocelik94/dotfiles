@@ -31,7 +31,10 @@
     proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   };
 
-  virtualisation = { docker.enable = true; };
+  virtualisation = { 
+    docker.enable = true;
+    vmware.guest.enable = true;
+  };
 
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";
