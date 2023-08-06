@@ -83,7 +83,7 @@ in
     xserver = {
       enable = true;
       layout = "eu";
-      videoDrivers = [ "nvidia" ];
+      videoDrivers = [ "vmware" ];
       desktopManager = { xfce.enable = false; };
       windowManager = { awesome = { enable = true; }; };
       desktopManager = { xterm.enable = false; };
