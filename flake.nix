@@ -38,9 +38,9 @@
 
   outputs = inputs @ {self, ...}: {
     nixosConfigurations = {
-      pr0ject = import ./host/pr0ject { inherit inputs; };
-      w0rk = import ./host/w0rk { inherit inputs; };
-      vmb0x = import ./host/vmb0x { inherit inputs; };
+      pr0ject = import ./hosts/pr0ject { inherit inputs; };
+      w0rk = import ./hosts/w0rk { inherit inputs; };
+      vmb0x = import ./hosts/vmb0x { inherit inputs; };
     };
   };
 }
