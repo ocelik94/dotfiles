@@ -1,6 +1,8 @@
-{pkgs, ...}: let
-  sddm-theme = pkgs.callPackage ../../pkgs/sddmtheme.nix {};
-in {
+{ pkgs, ... }:
+let
+  sddm-theme = pkgs.callPackage ../../pkgs/sddmtheme.nix { };
+in
+{
   programs = {
     zsh.enable = true;
     _1password = { enable = true; };
@@ -137,6 +139,6 @@ in {
   # screenshare
   xdg.portal = {
     enable = true;
-    extraPortals = [  pkgs.xdg-desktop-portal-wlr ];
+    extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
   };
 }

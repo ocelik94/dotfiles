@@ -22,8 +22,8 @@
     awesomerc = {
       url = "git+https://gitlab.projectoc.de/dotfiles/awesome.git";
       flake = false;
-    }; 
-    
+    };
+
     astronvim = {
       url = "git+https://github.com/AstroNvim/AstroNvim.git";
       flake = false;
@@ -36,7 +36,7 @@
 
   };
 
-  outputs = inputs @ {self, ...}: {
+  outputs = inputs @ { self, ... }: {
     nixosConfigurations = {
       pr0ject = import ./hosts/pr0ject { inherit inputs; };
       w0rk = import ./hosts/w0rk { inherit inputs; };

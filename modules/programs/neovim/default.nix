@@ -1,9 +1,10 @@
 { pkgs, config, lib, inputs, ... }:
-let 
+let
   cfg = config.modules.programs.neovim;
   neovim_cfg =
-      import ../../../configs/neovim { inherit inputs lib pkgs; };
-in with lib; {
+    import ../../../configs/neovim { inherit inputs lib pkgs; };
+in
+with lib; {
   options.modules.programs.neovim = {
     enable = mkOption {
       type = types.bool;

@@ -1,8 +1,7 @@
-{
-  pkgs,
-  lib,
-  theme,
-  ...
+{ pkgs
+, lib
+, theme
+, ...
 }: {
   fonts = {
     packages = with pkgs; [
@@ -12,7 +11,7 @@
       iosevka
       roboto
       spleen
-      (nerdfonts.override {fonts = ["RobotoMono" "NerdFontsSymbolsOnly"];})
+      (nerdfonts.override { fonts = [ "RobotoMono" "NerdFontsSymbolsOnly" ]; })
     ];
 
     fontconfig = {
@@ -28,23 +27,24 @@
         style = "full";
       };
       defaultFonts = {
-        serif = ["Noto Sans" "Symbols Nerd Font Mono"];
-        sansSerif = ["Noto Sans" "Symbols Nerd Font Mono"];
-        monospace = ["Noto Monospace" "Symbols Nerd Font Mono"];
-        emoji = ["Noto Color Emoji"];
+        serif = [ "Noto Sans" "Symbols Nerd Font Mono" ];
+        sansSerif = [ "Noto Sans" "Symbols Nerd Font Mono" ];
+        monospace = [ "Noto Monospace" "Symbols Nerd Font Mono" ];
+        emoji = [ "Noto Color Emoji" ];
       };
     };
   };
 
   console = {
     keyMap = lib.mkDefault "eu";
-    packages = with pkgs; [terminus_font];
+    packages = with pkgs; [ terminus_font ];
     font = "ter-u28b";
     useXkbConfig = true;
     earlySetup = true;
-    colors = let
-      substr = str: lib.strings.removePrefix "#" str;
-    in
+    colors =
+      let
+        substr = str: lib.strings.removePrefix "#" str;
+      in
       with theme; [
         (substr black)
         (substr red)

@@ -1,7 +1,7 @@
 { pkgs, config, lib, theme, inputs, ... }:
 let
   cfg = config.modules.desktop.awesome;
-  i3lock-script = import ./i3lock.nix {inherit pkgs theme;};
+  i3lock-script = import ./i3lock.nix { inherit pkgs theme; };
   awesome_cfg =
     import ../../../configs/awesome { inherit inputs lib theme pkgs; };
 in

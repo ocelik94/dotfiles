@@ -1,10 +1,10 @@
-{
-pkgs,
-config,
-lib,
-...
-}: let
-cfg = config.modules.services.picom;
+{ pkgs
+, config
+, lib
+, ...
+}:
+let
+  cfg = config.modules.services.picom;
 in
 with lib; {
   options.modules.services.picom = {

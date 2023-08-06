@@ -1,12 +1,12 @@
-{
-  pkgs,
-  config,
-  lib,
-  theme,
-  user,
-  ...
-}: let
-  oomox = pkgs.callPackage ../../../pkgs/themix-gui.nix {inherit theme;};
+{ pkgs
+, config
+, lib
+, theme
+, user
+, ...
+}:
+let
+  oomox = pkgs.callPackage ../../../pkgs/themix-gui.nix { inherit theme; };
   cfg = config.modules.desktop.gtk;
 
   kvtheme = ''
@@ -49,10 +49,11 @@
     ignored_applications=@Invalid()
   '';
 
-  rgbpallete = let
-    split = float: builtins.head (lib.strings.splitString "." float);
-    split_all = data: lib.attrsets.mapAttrs (_: value: split (toString value)) data;
-  in
+  rgbpallete =
+    let
+      split = float: builtins.head (lib.strings.splitString "." float);
+      split_all = data: lib.attrsets.mapAttrs (_: value: split (toString value)) data;
+    in
     with pkgs.lib.nix-rice; {
       black = split_all (color.hexToRgba theme.black);
       bg = split_all (color.hexToRgba theme.background);
@@ -65,9 +66,10 @@
       orange = split_all (color.hexToRgba theme.brightred);
     };
 
-  kdeglobal = let
-    rgb_str = rgb_map: "${rgb_map.r},${rgb_map.g},${rgb_map.b}";
-  in
+  kdeglobal =
+    let
+      rgb_str = rgb_map: "${rgb_map.r},${rgb_map.g},${rgb_map.b}";
+    in
     with rgbpallete; ''
       [Colors:View]
       BackgroundAlternate=${rgb_str altbg}

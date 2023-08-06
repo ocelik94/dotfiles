@@ -6,19 +6,18 @@ let
   theme = import ../../theme/dark.nix;
   pkgs = import inputs.nixpkgs {
     inherit system lib;
-    overlays = import ./overlays.nix {inherit inputs;};
+    overlays = import ./overlays.nix { inherit inputs; };
     config = {
       allowBroken = false;
       allowUnfree = true;
-      packageOverrides = super: {
-      };
+      packageOverrides = super: { };
     };
   };
-  fonts = import ./fonts.nix {inherit theme lib pkgs;};
+  fonts = import ./fonts.nix { inherit theme lib pkgs; };
 in
 lib.nixosSystem {
   inherit system pkgs;
-   modules = [
+  modules = [
     ./configuration.nix
     ./packages.nix
     fonts
@@ -27,7 +26,7 @@ lib.nixosSystem {
     {
       users.users.${user} = {
         isNormalUser = true;
-        extraGroups = ["wheel" "video" "audio" "users" "docker"];
+        extraGroups = [ "wheel" "video" "audio" "users" "docker" ];
         shell = pkgs.zsh;
       };
 
@@ -35,7 +34,7 @@ lib.nixosSystem {
         useGlobalPkgs = true;
         useUserPackages = true;
         users.${user} = import ./home/default.nix;
-        extraSpecialArgs = {inherit inputs pkgs system user theme;};
+        extraSpecialArgs = { inherit inputs pkgs system user theme; };
       };
     }
   ];

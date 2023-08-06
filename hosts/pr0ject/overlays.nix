@@ -1,4 +1,4 @@
-{inputs, ...}:
+{ inputs, ... }:
 with inputs; [
   nur.overlay
   neovim-nightly-overlay.overlay
