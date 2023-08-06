@@ -32,7 +32,7 @@ in
       minecraft.enable = true;
     };
     services = {
-      picom.enable = false;
+      picom.enable = true;
       polkit.enable = true;
     };
     shell = { zsh.enable = true; };
