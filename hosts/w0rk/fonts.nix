@@ -5,7 +5,7 @@
   ...
 }: {
   fonts = {
-    fonts = with pkgs; [
+    packages = with pkgs; [
       jetbrains-mono
       noto-fonts
       noto-fonts-emoji
