@@ -39,6 +39,7 @@
   outputs = inputs @ { self, ... }: {
     nixosConfigurations = {
       pr0ject = import ./hosts/pr0ject { inherit inputs; };
+      pr0ject-gnome = import ./hosts/pr0ject-gnome { inherit inputs; };
       w0rk = import ./hosts/w0rk { inherit inputs; };
       vmb0x = import ./hosts/vmb0x { inherit inputs; };
     };
