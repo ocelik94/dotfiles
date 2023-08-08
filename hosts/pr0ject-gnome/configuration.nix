@@ -34,13 +34,9 @@
 
   virtualisation = { 
     docker.enable = true;
-    vmware.guest.enable = true;
   };
 
-  time.timeZone = "EvaapiVdpau
-        libvdpau-va-gl
-        libva
-        nvidia-vaapi-driverurope/Berlin";
+  time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";
 
 
