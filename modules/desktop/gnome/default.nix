@@ -12,7 +12,7 @@ with lib; {
   options.modules.desktop.gnome = {
     enable = mkOption {
       type = types.bool;
-      default = true;
+      default = false;
       description = "gnome + gtk config";
     };
   };
@@ -23,28 +23,45 @@ with lib; {
         adwaita-qt
         gtk3
         gtk4
+        gnomeExtensions.dash-to-panel
+        gnomeExtensions.appindicator
       ];
       sessionVariables = {
-        GTK_THEME = "${theme.name.gtk}";
+      };
+    };
+
+    dconf = {
+      enable = true;
+      settings = {
+        "org/gnome/shell/extensions/user-theme" = {
+          name = "Adwaita:dark";
+        };
+        "org/gnome/desktop/interface" = {
+          color-scheme = "prefer-dark";
+          gtk-theme = "Adwaita-dark";
+        };
+        "org/gnome/shell" = {
+          disable-user-extensions = false;
+          enabled-extensions = [
+            "dash-to-panel@jderose9.github.com"
+            "appindicatorsupport@rgcjonas.gmail.com"
+          ];
+        };
       };
     };
 
     gtk = with theme; {
       enable = true;
       gtk3.extraConfig = {
-        gtk-xft-antialias = 1;
-        gtk-xft-hinting = 1;
-        gtk-xft-hintstyle = "hintslight";
-        gtk-xft-rgba = "rgb";
         gtk-application-prefer-dark-theme = 1;
       };
-      font = {
-        name = "Roboto";
-        size = 10;
+      gtk4.extraConfig = {
+        gtk-application-prefer-dark-theme = 1;
       };
-      theme.name = name.gtk;
+      #theme.name = name.gtk;
       iconTheme = {
-        name = name.icon;
+        name = "Papirus-Dark";
+        package = pkgs.papirus-icon-theme;
       };
     };
   };

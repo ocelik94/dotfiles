@@ -29,7 +29,7 @@
   environment = {
     sessionVariables = rec {
       EDITOR = "nvim";
-      GTK_THEME= "adwaita";
+      #GTK_THEME= "Adwaita:dark";
     };
 
     gnome.excludePackages = (with pkgs; [
@@ -42,6 +42,9 @@
       # program
       _1password
       _1password-gui
+
+      # gnome-utils
+      gnome.gnome-tweaks
 
       # system
       pulseaudio
@@ -84,6 +87,7 @@
       displayManager = {
         startx.enable = true;
         gdm.enable = true;
+        gdm.wayland = false;
       };
       libinput = {
         enable = true;

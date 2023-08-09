@@ -16,14 +16,11 @@ in
 
   config.modules = {
     desktop = {
-      awesome.enable = false;
-      gtk.enable = false;
       gnome.enable = true;
     };
     programs = {
       neovim.enable = true;
       wezterm.enable = true;
-      rofi.enable = true;
       vscode.enable = true;
       brave.enable = true;
       latex.enable = true;
@@ -33,8 +30,7 @@ in
       minecraft.enable = true;
     };
     services = {
-      picom.enable = true;
-      polkit.enable = true;
+      polkit.enable = false;
     };
     shell = { zsh.enable = true; };
   };

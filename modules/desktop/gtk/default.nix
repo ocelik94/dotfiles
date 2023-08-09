@@ -116,7 +116,7 @@ with lib; {
   options.modules.desktop.gtk = {
     enable = mkOption {
       type = types.bool;
-      default = true;
+      default = false;
       description = "Gtk + qt config";
     };
   };

@@ -29,8 +29,8 @@
     sha256 = "sha256:0kzg6a5538hsqjdpnfhqrwhmi7kbkhdxzk8yj1cxssb3bwrydpcr";
   };
   name = {
-    theme = "adwaita";
-    gtk = "adwaita";
+    theme = "adwaita-dark";
+    gtk = "Adwaita:dark";
     kvantum = "Kvantum";
     qt_style = "Fusion";
     icon = "icons_papirus";
