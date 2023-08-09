@@ -7,6 +7,7 @@
 }:
 let
   cfg = config.modules.desktop.gnome;
+  mkTuple = lib.hm.gvariant.mkTuple;
 in
 with lib; {
   options.modules.desktop.gnome = {
@@ -39,6 +40,11 @@ with lib; {
         "org/gnome/desktop/interface" = {
           color-scheme = "prefer-dark";
           gtk-theme = "Adwaita-dark";
+        };
+        "org/gnome/desktop/input-sources" = {
+          show-all-sources = true;
+          sources = [ (mkTuple [ "xkb" "eu" ]) ];
+          xkb-options = [ "terminate:ctrl_alt_bksp" ];
         };
         "org/gnome/shell" = {
           disable-user-extensions = false;
