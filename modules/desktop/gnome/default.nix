@@ -38,6 +38,10 @@ with lib; {
         "org/gnome/shell/extensions/user-theme" = {
           name = "Adwaita:dark";
         };
+        "org/gnome/mutter" = {
+          dynamic-workspaces = true;
+          edge-tiling = true;
+        };
         "org/gnome/desktop/peripherals/mouse" = {
           speed = "-0.155";
           accel-profile = "flat";
