@@ -38,6 +38,10 @@ with lib; {
         "org/gnome/shell/extensions/user-theme" = {
           name = "Adwaita:dark";
         };
+        "org/gnome/desktop/peripherals/mouse" = {
+          speed = "-0.155";
+          accel-profile = "flat";
+        };
         "org/gnome/desktop/interface" = {
           color-scheme = "prefer-dark";
           gtk-theme = "Adwaita-dark";
