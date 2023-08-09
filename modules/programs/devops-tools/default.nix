@@ -14,7 +14,7 @@ in with lib; {
       packages = with pkgs; [
         # Kubernetes related
         terraform
-        helm
+        kubernetes-helm
         kubectl
         lens
         drawio
