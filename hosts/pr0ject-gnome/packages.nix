@@ -1,7 +1,4 @@
 { pkgs, ... }:
-let
-  sddm-theme = pkgs.callPackage ../../pkgs/sddmtheme.nix { };
-in
 {
   programs = {
     zsh.enable = true;
@@ -32,7 +29,14 @@ in
   environment = {
     sessionVariables = rec {
       EDITOR = "nvim";
+      GTK_THEME= "adwaita";
     };
+
+    gnome.excludePackages = (with pkgs; [
+      gnome-photos
+      gnome-tour
+      epiphany
+    ]);
 
     systemPackages = with pkgs; [
       # program
@@ -47,12 +51,6 @@ in
       ffmpeg
       htop
       clinfo
-      glxinfo
-      vulkan-tools
-      vulkan-loader
-      vulkan-validation-layers
-      libva
-      libva-utils
 
       # compression
       p7zip
@@ -60,8 +58,6 @@ in
       unzip
       exfat
       zip
-
-      sddm-theme
     ];
   };
 
@@ -84,7 +80,6 @@ in
       layout = "eu";
       videoDrivers = [ "nvidia" ];
       desktopManager = { gnome.enable = true; };
-      windowManager = { awesome = { enable = false; }; };
       imwheel.enable = true;
       displayManager = {
         startx.enable = true;

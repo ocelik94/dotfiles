@@ -17,7 +17,8 @@ in
   config.modules = {
     desktop = {
       awesome.enable = false;
-      gtk.enable = true;
+      gtk.enable = false;
+      gnome.enable = true;
     };
     programs = {
       neovim.enable = true;
