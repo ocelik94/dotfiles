@@ -26,6 +26,7 @@ with lib; {
         gtk4
         gnomeExtensions.dash-to-panel
         gnomeExtensions.appindicator
+        gnomeExtensions.impatience
       ];
       sessionVariables = {
       };
@@ -51,6 +52,7 @@ with lib; {
           enabled-extensions = [
             "dash-to-panel@jderose9.github.com"
             "appindicatorsupport@rgcjonas.gmail.com"
+            "impatience@gfxmonk.net"
           ];
         };
       };
