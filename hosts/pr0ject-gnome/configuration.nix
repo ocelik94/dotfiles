@@ -27,7 +27,7 @@
   time.hardwareClockInLocalTime = true;
 
   networking = {
-    hostName = "vmb0x";
+    hostName = "pr0ject";
     networkmanager.enable = true;
     proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   };
