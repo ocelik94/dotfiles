@@ -41,6 +41,7 @@ with lib; {
         "org/gnome/mutter" = {
           dynamic-workspaces = true;
           edge-tiling = true;
+          workspaces-only-on-primary = true;
         };
         "org/gnome/desktop/peripherals/mouse" = {
           speed = "-0.155";
@@ -54,6 +55,9 @@ with lib; {
           show-all-sources = true;
           sources = [ (mkTuple [ "xkb" "eu" ]) ];
           xkb-options = [ "terminate:ctrl_alt_bksp" ];
+        };
+        "org/gnome/shell/app-switcher" = {
+          current-workspace-only = true;
         };
         "org/gnome/shell" = {
           disable-user-extensions = false;
