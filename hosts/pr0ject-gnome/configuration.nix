@@ -55,7 +55,6 @@
 
     nvidia = {
       nvidiaSettings = true;
-      nvidiaPersistenced = true;
       modesetting.enable = true;
       open = true;
       powerManagement.enable = true;
