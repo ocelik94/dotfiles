@@ -35,6 +35,13 @@ with lib; {
     dconf = {
       enable = true;
       settings = {
+        "org/gnome/desktop/session" = {
+          idle-delay = "uint32 900";
+        };
+        "org/gnome/settings-daemon/plugins/power" = {
+          sleep-inactive-ac-type = "nothing";
+          power-button-action = "interactive";
+        };
         "org/gnome/shell/extensions/user-theme" = {
           name = "Adwaita:dark";
         };
