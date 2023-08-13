@@ -35,6 +35,9 @@ with lib; {
     dconf = {
       enable = true;
       settings = {
+        "org/gnome/desktop/wm/preferences" = {
+          button-layout = "appmenu:minimize,maximize,close";
+        };
         "org/gnome/desktop/session" = {
           idle-delay = "uint32 900";
         };
