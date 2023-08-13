@@ -1,7 +1,7 @@
 { inputs, ... }:
 with inputs; [
-  nur.overlay
-  neovim-nightly-overlay.overlay
+  # nur.overlay
+  # neovim-nightly-overlay.overlay
   nixpkgs-f2k.overlays.compositors
   nix-rice.overlays.default
   (final: prev: {

@@ -21,7 +21,7 @@ lib.nixosSystem {
     ./configuration.nix
     ./packages.nix
     fonts
-    inputs.nur.nixosModules.nur
+    # inputs.nur.nixosModules.nur
     inputs.home-manager.nixosModules.home-manager
     {
       users.users.${user} = {

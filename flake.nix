@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    nur = { url = "github:nix-community/NUR"; };
+    # nur = { url = "github:nix-community/NUR"; };
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -13,9 +13,9 @@
 
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
 
-    neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
-    };
+    # neovim-nightly-overlay = {
+    #   url = "github:nix-community/neovim-nightly-overlay";
+    # };
 
     nix-rice = { url = "github:bertof/nix-rice"; };
 
