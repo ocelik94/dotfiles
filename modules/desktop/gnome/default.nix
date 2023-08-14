@@ -26,7 +26,7 @@ with lib; {
         gtk4
         gnomeExtensions.dash-to-panel
         gnomeExtensions.appindicator
-        gnomeExtensions.impatience
+        gnomeExtensions.just-perfection
       ];
       sessionVariables = {
       };
@@ -51,6 +51,10 @@ with lib; {
         "org/gnome/shell/extensions/user-theme" = {
           name = "Adwaita:dark";
         };
+        
+        "org/gnome/shell/extensions/just-perfection" = {
+          animation = 2;
+        };
         "org/gnome/mutter" = {
           dynamic-workspaces = true;
           edge-tiling = true;
@@ -63,6 +67,7 @@ with lib; {
         "org/gnome/desktop/interface" = {
           color-scheme = "prefer-dark";
           gtk-theme = "Adwaita-dark";
+          enable-animations = true;
         };
         "org/gnome/desktop/input-sources" = {
           show-all-sources = true;
@@ -77,8 +82,8 @@ with lib; {
           enabled-extensions = [
             "dash-to-panel@jderose9.github.com"
             "appindicatorsupport@rgcjonas.gmail.com"
-            "impatience@gfxmonk.net"
             "workspace-indicator@gnome-shell-extensions.gcampax.github.com"
+            "just-perfection-desktop@just-perfection"
           ];
         };
       };
