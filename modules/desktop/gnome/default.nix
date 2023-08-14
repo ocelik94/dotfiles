@@ -35,6 +35,9 @@ with lib; {
     dconf = {
       enable = true;
       settings = {
+        "org/gnome/shell/extensions/dash-to-panel" = {
+          hide-overview-on-startup = true;
+        };
         "org/gnome/desktop/wm/preferences" = {
           button-layout = "appmenu:minimize,maximize,close";
         };
@@ -75,6 +78,7 @@ with lib; {
             "dash-to-panel@jderose9.github.com"
             "appindicatorsupport@rgcjonas.gmail.com"
             "impatience@gfxmonk.net"
+            "workspace-indicator@gnome-shell-extensions.gcampax.github.com"
           ];
         };
       };
