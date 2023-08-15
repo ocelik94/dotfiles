@@ -14,7 +14,7 @@ with lib; {
 
   config = mkIf cfg.enable {
     home = {
-      packages = with pkgs; [ tectonic biber217 perl536Packages.LatexIndent ];
+      packages = with pkgs; [ tectonic biber217 perl536Packages.LatexIndent jabref ];
     };
   };
 }
