@@ -5,7 +5,6 @@
   boot = {
     supportedFilesystems = [ "ntfs" ];
     kernelPackages = pkgs.linuxPackages_latest;
-    blacklistedKernelModules = [ "nouveau" "i2c_nvidia_gpu" ];
     kernelParams = [ "quiet" "acpi_osi=!" ];
     loader = {
       timeout = 5;
@@ -43,19 +42,6 @@
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
-      extraPackages = with pkgs; [
-        vaapiVdpau
-        libvdpau-va-gl
-        libva
-        nvidia-vaapi-driver
-      ];
-    };
-    nvidia = {
-      nvidiaSettings = true;
-      nvidiaPersistenced = true;
-      modesetting.enable = true;
-      open = true;
-      powerManagement.enable = true;
     };
 
     pulseaudio.enable = false;

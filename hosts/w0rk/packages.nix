@@ -83,7 +83,7 @@ in
     xserver = {
       enable = true;
       layout = "eu";
-      videoDrivers = [ "nvidia" ];
+      videoDrivers = [ "amdgpu" ];
       desktopManager = { xfce.enable = false; };
       windowManager = { awesome = { enable = true; }; };
       desktopManager = { xterm.enable = false; };
@@ -94,11 +94,6 @@ in
           enable = true;
           theme = "Psion";
         };
-        setupCommands = ''
-          LEFT='DP-0'
-          RIGHT='DP-2'
-          ${pkgs.xorg.xrandr}/bin/xrandr --output $LEFT --left-of $RIGHT --mode 2560x1440 --rate 165 --output $RIGHT --primary --mode 2560x1440 --rate 165 
-        '';
       };
       libinput = {
         enable = true;
