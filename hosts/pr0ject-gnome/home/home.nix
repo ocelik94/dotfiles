@@ -26,6 +26,7 @@
         easyeffects
         teamspeak_client
         discord
+        fragments
 
         # Downloader
         wget
