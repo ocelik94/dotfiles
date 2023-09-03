@@ -15,6 +15,7 @@ in with lib; {
         # MC related
         packwiz
         prismlauncher
+        steam
       ];
     };
   };
