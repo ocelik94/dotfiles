@@ -21,6 +21,10 @@ in with lib; {
         jetbrains-toolbox
         awscli2
         azure-cli
+        grype
+        syft
+        kind
+        cosign
       ];
     };
   };
