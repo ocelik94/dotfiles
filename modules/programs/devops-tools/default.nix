@@ -25,6 +25,11 @@ in with lib; {
         syft
         kind
         cosign
+        google-cloud-sdk
+        gnome-connections
+        tigervnc
+        kubie
+        inkscape
       ];
     };
   };

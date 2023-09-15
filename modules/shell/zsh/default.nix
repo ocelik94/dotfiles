@@ -11,7 +11,7 @@ in with lib; {
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      exa
+      eza
       fzf
       vscode-extensions.vadimcn.vscode-lldb
     ];

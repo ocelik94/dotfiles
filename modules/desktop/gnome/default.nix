@@ -42,7 +42,7 @@ with lib; {
           button-layout = "appmenu:minimize,maximize,close";
         };
         "org/gnome/desktop/session" = {
-          idle-delay = "uint32 900";
+          idle-delay = "uint32 0";
         };
         "org/gnome/settings-daemon/plugins/power" = {
           sleep-inactive-ac-type = "nothing";
