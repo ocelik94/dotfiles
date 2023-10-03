@@ -11,12 +11,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
-
-    # neovim-nightly-overlay = {
-    #   url = "github:nix-community/neovim-nightly-overlay";
-    # };
-
     nix-rice = { url = "github:bertof/nix-rice"; };
 
     awesomerc = {
