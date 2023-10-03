@@ -20,7 +20,7 @@ in with lib; {
         drawio
         jetbrains-toolbox
         awscli2
-        azure-cli
+        # azure-cli
         grype
         syft
         kind
@@ -30,6 +30,7 @@ in with lib; {
         tigervnc
         kubie
         inkscape
+        bun
       ];
     };
   };

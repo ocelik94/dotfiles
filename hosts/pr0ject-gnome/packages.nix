@@ -30,7 +30,6 @@
   environment = {
     sessionVariables = rec {
       EDITOR = "nvim";
-      #GTK_THEME= "Adwaita:dark";
     };
 
     gnome.excludePackages = (with pkgs; [

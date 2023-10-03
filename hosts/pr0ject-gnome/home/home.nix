@@ -35,13 +35,10 @@
         # Dev
         sublime-merge
         gnupg
-        rustup
         git
         jq
-        gcc
-        cmake
-        python311
-        poetry
+        jetbrains.rust-rover
+        jetbrains.webstorm
       ];
   };
 }
