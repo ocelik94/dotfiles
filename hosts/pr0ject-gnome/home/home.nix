@@ -39,6 +39,7 @@
         jq
         jetbrains.rust-rover
         jetbrains.webstorm
+        jetbrains.datagrip
       ];
   };
 }

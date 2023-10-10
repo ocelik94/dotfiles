@@ -18,7 +18,6 @@ in with lib; {
         kubectl
         lens
         drawio
-        jetbrains-toolbox
         awscli2
         # azure-cli
         grype

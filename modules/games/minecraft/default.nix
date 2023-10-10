@@ -13,9 +13,9 @@ in with lib; {
     home = {
       packages = with pkgs; [
         # MC related
-        packwiz
         prismlauncher
         steam
+        lutris
       ];
     };
   };
