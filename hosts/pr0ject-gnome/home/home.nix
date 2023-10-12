@@ -31,6 +31,8 @@
         # Downloader
         wget
         aria
+        x2goclient
+        remmina
 
         # Dev
         sublime-merge

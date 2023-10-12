@@ -27,8 +27,6 @@ in
     ssh.askPassword = "";
   };
 
-  nixpkgs.config = { allowUnfree = true; };
-
   environment = {
     sessionVariables = rec {
       QT_QPA_PLATFORMTHEME = "qt5ct";

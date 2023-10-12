@@ -25,8 +25,6 @@
     ssh.askPassword = "";
   };
 
-  nixpkgs.config = { allowUnfree = true; };
-
   environment = {
     sessionVariables = rec {
       EDITOR = "nvim";
