@@ -1,4 +1,4 @@
-{ pkgs, lib, config, user, theme, ... }:
+{ pkgs, lib, config, user, theme, inputs, ... }:
 let cfg = config.modules.games.minecraft;
 in with lib; {
   options.modules.games.minecraft = {
@@ -15,7 +15,12 @@ in with lib; {
         # MC related
         prismlauncher
         steam
-        lutris
+        # inputs.nix-gaming.packages.${pkgs.system}.wine-ge
+        (lutris.override {
+          extraLibraries = pkgs: [
+          pkgs.jansson
+          ];
+        })
       ];
     };
   };

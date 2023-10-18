@@ -33,6 +33,7 @@
         aria
         x2goclient
         remmina
+        filezilla
 
         # Dev
         sublime-merge

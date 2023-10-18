@@ -2,7 +2,9 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    nix-gaming.url = "github:fufexan/nix-gaming";
 
     # nur = { url = "github:nix-community/NUR"; };
 
@@ -14,7 +16,7 @@
     nix-rice = { url = "github:bertof/nix-rice"; };
 
     awesomerc = {
-      url = "git+https://gitlab.projectoc.de/dotfiles/awesome.git";
+      url = "git+https://gitlab.pr0ject.dev/dotfiles/awesomewm.git";
       flake = false;
     };
 
@@ -24,7 +26,7 @@
     };
 
     neovim-dotfiles = {
-      url = "git+https://gitlab.projectoc.de/dotfiles/neovim.git";
+      url = "git+https://gitlab.pr0ject.dev/dotfiles/neovim.git";
       flake = false;
     };
 

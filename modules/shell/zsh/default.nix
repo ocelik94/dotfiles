@@ -49,7 +49,7 @@ in with lib; {
           '' + (p10k);
         shellAliases = {
           nixr =
-            "sudo nixos-rebuild switch --flake https://gitlab.projectoc.de/dotfiles/flake#pr0ject";
+            "sudo nixos-rebuild switch --flake https://gitlab.pr0ject.dev/dotfiles/dotfiles.git#pr0ject";
           nixc = "sudo nix-collect-garbage --delete-older-than 2d";
           e = "${pkgs.neovim}/bin/nvim ./";
           f = "${pkgs.ranger}/bin/ranger";

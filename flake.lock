@@ -3,11 +3,11 @@
     "astronvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1697064365,
-        "narHash": "sha256-LHGH6kAxiBQwy1uA8oSa8cuI+OBQF0b+cTtmLPNbgvs=",
+        "lastModified": 1697633970,
+        "narHash": "sha256-BP0Cj9CKg4JJ7s5KWxcydDRLzIv5ppaaM9o82IGGRVU=",
         "ref": "refs/heads/main",
-        "rev": "fb497c6739f5d368fcba2357b02303a8c82e3ec5",
-        "revCount": 1589,
+        "rev": "3a72c6e1f89c682564c47cf0a2b6f2ecf9b442d8",
+        "revCount": 1590,
         "type": "git",
         "url": "https://github.com/AstroNvim/AstroNvim.git"
       },
@@ -25,11 +25,11 @@
         "rev": "5104dc05006fe7454c7e52285aa1d69e889f18f3",
         "revCount": 11,
         "type": "git",
-        "url": "https://gitlab.projectoc.de/dotfiles/awesome.git"
+        "url": "https://gitlab.pr0ject.dev/dotfiles/awesomewm.git"
       },
       "original": {
         "type": "git",
-        "url": "https://gitlab.projectoc.de/dotfiles/awesome.git"
+        "url": "https://gitlab.pr0ject.dev/dotfiles/awesomewm.git"
       }
     },
     "flake-compat": {
@@ -61,6 +61,24 @@
       "original": {
         "owner": "edolstra",
         "repo": "flake-compat",
+        "type": "github"
+      }
+    },
+    "flake-parts": {
+      "inputs": {
+        "nixpkgs-lib": "nixpkgs-lib"
+      },
+      "locked": {
+        "lastModified": 1696343447,
+        "narHash": "sha256-B2xAZKLkkeRFG5XcHHSXXcP7To9Xzr59KXeZiRf4vdQ=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "c9afaba3dfa4085dbd2ccb38dfade5141e33d9d4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
         "type": "github"
       }
     },
@@ -111,11 +129,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1696940889,
-        "narHash": "sha256-p2Wic74A1tZpFcld1wSEbFQQbrZ/tPDuLieCnspamQo=",
+        "lastModified": 1697662575,
+        "narHash": "sha256-fVtd4Le9edB831xyGWu0aqSfg6YVbkCNMX/IE3SUIdk=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "6bba64781e4b7c1f91a733583defbd3e46b49408",
+        "rev": "3433206e51766b4164dad368a81325efbf343fbe",
         "type": "github"
       },
       "original": {
@@ -149,11 +167,30 @@
         "rev": "f9b1ab1dd89d5c17970f0895910e8b6f2cf3c162",
         "revCount": 3,
         "type": "git",
-        "url": "https://gitlab.projectoc.de/dotfiles/neovim.git"
+        "url": "https://gitlab.pr0ject.dev/dotfiles/neovim.git"
       },
       "original": {
         "type": "git",
-        "url": "https://gitlab.projectoc.de/dotfiles/neovim.git"
+        "url": "https://gitlab.pr0ject.dev/dotfiles/neovim.git"
+      }
+    },
+    "nix-gaming": {
+      "inputs": {
+        "flake-parts": "flake-parts",
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1697522478,
+        "narHash": "sha256-zJjqof16zmmBm9XBifjlsPKmFev/QYuQsC7y+RAmJek=",
+        "owner": "fufexan",
+        "repo": "nix-gaming",
+        "rev": "bb6f28dc668b271d39a82d9ad69ef01d8d15aa9a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fufexan",
+        "repo": "nix-gaming",
+        "type": "github"
       }
     },
     "nix-rice": {
@@ -161,7 +198,7 @@
         "flake-compat": "flake-compat",
         "flake-utils": "flake-utils",
         "kitty-themes-src": "kitty-themes-src",
-        "nixpkgs-lib": "nixpkgs-lib",
+        "nixpkgs-lib": "nixpkgs-lib_2",
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
@@ -180,21 +217,39 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1681303793,
-        "narHash": "sha256-JEdQHsYuCfRL2PICHlOiH/2ue3DwoxUX7DJ6zZxZXFk=",
+        "lastModified": 1697009197,
+        "narHash": "sha256-viVRhBTFT8fPJTb1N3brQIpFZnttmwo3JVKNuWRVc3s=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "fe2ecaf706a5907b5e54d979fbde4924d84b65fc",
+        "rev": "01441e14af5e29c9d27ace398e6dd0b293e25a54",
         "type": "github"
       },
       "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-lib": {
+      "locked": {
+        "dir": "lib",
+        "lastModified": 1696019113,
+        "narHash": "sha256-X3+DKYWJm93DRSdC5M6K5hLqzSya9BjibtBsuARoPco=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "f5892ddac112a1e9b3612c39af1b72987ee5783a",
+        "type": "github"
+      },
+      "original": {
+        "dir": "lib",
         "owner": "NixOS",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
     },
-    "nixpkgs-lib": {
+    "nixpkgs-lib_2": {
       "locked": {
         "lastModified": 1681001314,
         "narHash": "sha256-5sDnCLdrKZqxLPK4KA8+f4A3YKO/u6ElpMILvX0g72c=",
@@ -227,16 +282,32 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1697009197,
-        "narHash": "sha256-viVRhBTFT8fPJTb1N3brQIpFZnttmwo3JVKNuWRVc3s=",
+        "lastModified": 1681303793,
+        "narHash": "sha256-JEdQHsYuCfRL2PICHlOiH/2ue3DwoxUX7DJ6zZxZXFk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "01441e14af5e29c9d27ace398e6dd0b293e25a54",
+        "rev": "fe2ecaf706a5907b5e54d979fbde4924d84b65fc",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1697456312,
+        "narHash": "sha256-roiSnrqb5r+ehnKCauPLugoU8S36KgmWraHgRqVYndo=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "ca012a02bf8327be9e488546faecae5e05d7d749",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -249,7 +320,7 @@
           "flake-utils"
         ],
         "gitignore": "gitignore",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": "nixpkgs_2",
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
@@ -272,8 +343,9 @@
         "awesomerc": "awesomerc",
         "home-manager": "home-manager",
         "neovim-dotfiles": "neovim-dotfiles",
+        "nix-gaming": "nix-gaming",
         "nix-rice": "nix-rice",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_3"
       }
     },
     "systems": {
