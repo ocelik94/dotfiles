@@ -8,7 +8,7 @@
 <br/>
 
 # 🗒 About
-These are the files I use to set up my Linux machines with NixOS. You are welcome to grab anything that interests you.
+These are the files I use to set up my Linux machines with NixOS. Feel free to take anything that interests you.
 
 - [configs](configs): special configuration e.g. awesomewm & neovim
 - [pkgs](pkgs): package definitions (see next section)
