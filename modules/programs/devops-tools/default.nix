@@ -13,7 +13,6 @@ in with lib; {
     home = {
       packages = with pkgs; [
         # Kubernetes related
-        terraform
         kubernetes-helm
         kubectl
         lens

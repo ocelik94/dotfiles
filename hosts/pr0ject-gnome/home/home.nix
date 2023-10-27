@@ -26,12 +26,10 @@
         easyeffects
         teamspeak_client
         discord
-        fragments
 
         # Downloader
         wget
         aria
-        x2goclient
         remmina
         filezilla
 
@@ -43,6 +41,8 @@
         jetbrains.rust-rover
         jetbrains.webstorm
         jetbrains.datagrip
+        kubeseal
+        fluxcd
       ];
   };
 }

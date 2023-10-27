@@ -20,7 +20,7 @@ in with lib; {
         eamodio.gitlens
         valentjn.vscode-ltex
         hashicorp.terraform
-        ms-python.python
+        # ms-python.python
       ];
       userSettings = {
         editor.fontFamily = "RobotoMono Nerd Font Mono";
@@ -31,6 +31,7 @@ in with lib; {
         workbench.startupEditor = "none";
         security.workspace.trust.enabled = false;
         window.restoreWindows = "none";
+        explorer.confirmDragAndDrop = false;
       };
     };
   };
