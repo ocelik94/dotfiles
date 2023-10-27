@@ -9,7 +9,7 @@ with lib; {
     enable = mkOption {
       type = types.bool;
       default = false;
-      description = "enable neovim with astronvim";
+      description = "enable neovim with nvchad";
     };
   };
 

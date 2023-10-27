@@ -174,6 +174,22 @@
         "url": "https://gitlab.pr0ject.dev/dotfiles/neovim.git"
       }
     },
+    "neovim-dotfiles-nvchad": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1698444086,
+        "narHash": "sha256-4rdgPiCLwLA/d+dyyrIIt32zwSP3GZLm7reMVcU82Mg=",
+        "ref": "refs/heads/main",
+        "rev": "05712b4fcff122621286faab94ad7f84c16b5306",
+        "revCount": 1,
+        "type": "git",
+        "url": "https://gitlab.pr0ject.dev/dotfiles/neovim-nvchad-config.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://gitlab.pr0ject.dev/dotfiles/neovim-nvchad-config.git"
+      }
+    },
     "nix-gaming": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -312,6 +328,22 @@
         "type": "github"
       }
     },
+    "nvchad": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1698366823,
+        "narHash": "sha256-u5U7caaHq9lsyYTZ4Gx+TshHIxgqnx03vWVWzKBqBhI=",
+        "ref": "refs/heads/v2.0",
+        "rev": "a8413849cf9d648df0ae81a9349c8b125e628919",
+        "revCount": 1593,
+        "type": "git",
+        "url": "https://github.com/NvChad/NvChad.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://github.com/NvChad/NvChad.git"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -343,9 +375,11 @@
         "awesomerc": "awesomerc",
         "home-manager": "home-manager",
         "neovim-dotfiles": "neovim-dotfiles",
+        "neovim-dotfiles-nvchad": "neovim-dotfiles-nvchad",
         "nix-gaming": "nix-gaming",
         "nix-rice": "nix-rice",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_3",
+        "nvchad": "nvchad"
       }
     },
     "systems": {

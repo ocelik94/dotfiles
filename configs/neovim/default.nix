@@ -2,14 +2,21 @@
 pkgs.stdenv.mkDerivation rec {
   name = "neovim";
 
-  user-src = inputs.neovim-dotfiles;
-  src = inputs.astronvim;
+  user-src = inputs.neovim-dotfiles-nvchad;
+  src = inputs.nvchad;
 
   phases = [ "installPhase" ];
+
+  # installPhase = ''
+  #   mkdir -p $out/lua/user
+  #   cp -r ${src}/* $out/
+  #   cp -r ${user-src}/* $out/lua/user
+  # '';
 
   installPhase = ''
     mkdir -p $out/lua/user
     cp -r ${src}/* $out/
-    cp -r ${user-src}/* $out/lua/user
+    mkdir -p $out/lua/custom
+    cp -r ${user-src}/* $out/lua/custom
   '';
 }

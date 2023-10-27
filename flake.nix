@@ -25,11 +25,20 @@
       flake = false;
     };
 
+    nvchad = {
+      url = "git+https://github.com/NvChad/NvChad.git";
+      flake = false;
+    };
+
     neovim-dotfiles = {
       url = "git+https://gitlab.pr0ject.dev/dotfiles/neovim.git";
       flake = false;
     };
 
+    neovim-dotfiles-nvchad = {
+      url = "git+https://gitlab.pr0ject.dev/dotfiles/neovim-nvchad-config.git";
+      flake = false;
+    };
   };
 
   outputs = inputs @ { self, ... }: {
