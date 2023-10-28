@@ -177,11 +177,11 @@
     "neovim-dotfiles-nvchad": {
       "flake": false,
       "locked": {
-        "lastModified": 1698444086,
-        "narHash": "sha256-4rdgPiCLwLA/d+dyyrIIt32zwSP3GZLm7reMVcU82Mg=",
+        "lastModified": 1698448959,
+        "narHash": "sha256-i17LE1RLWajvcW1LbYohtxiddHCqgaEQafx6r6t89+c=",
         "ref": "refs/heads/main",
-        "rev": "05712b4fcff122621286faab94ad7f84c16b5306",
-        "revCount": 1,
+        "rev": "e7941dfa34bb8cd4b8972c7a37a1c967d3a00207",
+        "revCount": 2,
         "type": "git",
         "url": "https://gitlab.pr0ject.dev/dotfiles/neovim-nvchad-config.git"
       },

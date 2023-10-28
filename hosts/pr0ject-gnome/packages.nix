@@ -52,6 +52,7 @@
       ffmpeg
       htop
       clinfo
+      gcc
 
       # compression
       p7zip
