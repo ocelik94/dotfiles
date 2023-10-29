@@ -1,9 +1,7 @@
 { pkgs, ... }:
-let
-  sddm-theme = pkgs.callPackage ../../pkgs/sddmtheme.nix { };
-in
 {
   programs = {
+    gamemode.enable = true;
     zsh.enable = true;
     _1password = { enable = true; };
     _1password-gui = {
@@ -29,7 +27,6 @@ in
 
   environment = {
     sessionVariables = rec {
-      QT_QPA_PLATFORMTHEME = "qt5ct";
       EDITOR = "nvim";
     };
 
@@ -46,12 +43,7 @@ in
       ffmpeg
       htop
       clinfo
-      glxinfo
-      vulkan-tools
-      vulkan-loader
-      vulkan-validation-layers
-      libva
-      libva-utils
+      gcc
 
       # compression
       p7zip
@@ -59,8 +51,6 @@ in
       unzip
       exfat
       zip
-
-      sddm-theme
     ];
   };
 
@@ -70,7 +60,6 @@ in
   };
 
   services = {
-    gnome.gnome-keyring.enable = true;
     blueman.enable = false;
     fstrim.enable = true;
     dbus.enable = true;
@@ -82,21 +71,10 @@ in
       enable = true;
       layout = "eu";
       videoDrivers = [ "nvidia" ];
-      desktopManager = { xfce.enable = false; };
-      windowManager = { awesome = { enable = true; }; };
-      desktopManager = { xterm.enable = false; };
+      desktopManager = { plasma5.enable = true; };
       imwheel.enable = true;
       displayManager = {
-        startx.enable = true;
-        sddm = {
-          enable = true;
-          theme = "Psion";
-        };
-        setupCommands = ''
-          LEFT='DP-0'
-          RIGHT='DP-2'
-          ${pkgs.xorg.xrandr}/bin/xrandr --output $LEFT --left-of $RIGHT --mode 2560x1440 --rate 165 --output $RIGHT --primary --mode 2560x1440 --rate 165 
-        '';
+        sddm.enable = true;
       };
       libinput = {
         enable = true;
@@ -137,6 +115,6 @@ in
   # screenshare
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
+    extraPortals = [ pkgs.xdg-desktop-portal-kde ];
   };
 }

@@ -32,7 +32,11 @@
     proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   };
 
-  virtualisation = { docker.enable = true; };
+  virtualisation = { 
+    docker = {
+      enable = true;
+    };
+  };
 
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -50,9 +54,9 @@
         nvidia-vaapi-driver
       ];
     };
+
     nvidia = {
       nvidiaSettings = true;
-      nvidiaPersistenced = true;
       modesetting.enable = true;
       open = true;
       powerManagement.enable = true;

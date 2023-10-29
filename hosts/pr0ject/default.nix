@@ -3,7 +3,7 @@ let
   inherit (inputs.nixpkgs) lib;
   system = "x86_64-linux";
   user = "ocelik";
-  theme = import ../../theme/dark.nix;
+  theme = import ../../theme/adwaita.nix;
   pkgs = import inputs.nixpkgs {
     inherit system lib;
     overlays = import ./overlays.nix { inherit inputs; };

@@ -1,11 +1,6 @@
 { pkgs, ... }: {
   services.network-manager-applet.enable = true;
 
-  xdg.userDirs = {
-    enable = true;
-    createDirectories = true;
-  };
-
   home = {
     username = "ocelik";
     homeDirectory = "/home/ocelik";
@@ -20,8 +15,6 @@
         lazygit
         ripgrep
         gh-dash
-        lxqt.pcmanfm-qt
-        libsForQt5.ark
         direnv
 
         # General
@@ -37,24 +30,19 @@
         # Downloader
         wget
         aria
-
-        # Language Servers
-        sumneko-lua-language-server
-        nodePackages.typescript-language-server
-        nodePackages.vscode-langservers-extracted
+        remmina
+        filezilla
 
         # Dev
         sublime-merge
         gnupg
-        rustup
         git
         jq
-        gcc
-        pkg-config
-        luajitPackages.jsregexp
-        cmake
-        python311
-        poetry
+        jetbrains.rust-rover
+        jetbrains.webstorm
+        jetbrains.datagrip
+        kubeseal
+        fluxcd
       ];
   };
 }
