@@ -54,6 +54,7 @@ in with lib; {
           e = "${pkgs.neovim}/bin/nvim ./";
           f = "${pkgs.ranger}/bin/ranger";
           vim = "nvim";
+          nixd = "nix develop --command zsh";
         };
         oh-my-zsh = {
           enable = true;
