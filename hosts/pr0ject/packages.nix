@@ -75,7 +75,7 @@
       desktopManager = { gnome.enable = true; };
       imwheel.enable = true;
       displayManager = {
-        gddm.enable = true;
+        gdm.enable = true;
       };
       libinput = {
         enable = true;
