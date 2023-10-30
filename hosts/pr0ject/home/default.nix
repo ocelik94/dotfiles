@@ -16,7 +16,7 @@ in
 
   config.modules = {
     desktop = {
-      plasma.enable = true;
+      gnome.enable = true;
     };
     programs = {
       neovim.enable = true;

@@ -5,7 +5,6 @@
   boot = {
     supportedFilesystems = [ "ntfs" ];
     kernelPackages = pkgs.linuxPackages_latest;
-    blacklistedKernelModules = [ "nouveau" "i2c_nvidia_gpu" ];
     kernelParams = [ "quiet" "acpi_osi=!" ];
     loader = {
       timeout = 5;
@@ -42,6 +41,7 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
 
+  programs.xwayland.enable = true;
   hardware = {
     opengl = {
       enable = true;

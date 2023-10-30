@@ -60,6 +60,7 @@
   };
 
   services = {
+    gnome.gnome-keyring.enable = true;
     blueman.enable = false;
     fstrim.enable = true;
     dbus.enable = true;
@@ -71,10 +72,10 @@
       enable = true;
       layout = "eu";
       videoDrivers = [ "nvidia" ];
-      desktopManager = { plasma5.enable = true; };
+      desktopManager = { gnome.enable = true; };
       imwheel.enable = true;
       displayManager = {
-        sddm.enable = true;
+        gddm.enable = true;
       };
       libinput = {
         enable = true;
@@ -115,6 +116,6 @@
   # screenshare
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-kde ];
+    extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
   };
 }
