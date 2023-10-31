@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   imports =
     [ ./hardware-configuration.nix ];
@@ -60,6 +60,7 @@
       modesetting.enable = true;
       open = true;
       powerManagement.enable = true;
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
     };
 
     pulseaudio.enable = false;

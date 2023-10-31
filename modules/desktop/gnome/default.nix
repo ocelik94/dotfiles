@@ -29,6 +29,7 @@ with lib; {
         gnomeExtensions.just-perfection
       ];
       sessionVariables = {
+        NIXOS_OZONE_WL="1";
       };
     };
 

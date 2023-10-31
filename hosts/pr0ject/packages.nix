@@ -76,6 +76,7 @@
       imwheel.enable = true;
       displayManager = {
         gdm.enable = true;
+        gdm.wayland = true;
       };
       libinput = {
         enable = true;
